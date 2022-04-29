@@ -41,6 +41,18 @@ N/A
 
 To get more help on the Angular CLI use `npm run ng` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## TODO
+<!--  -->
 
-Eslint ngrx
+firebase deploy --only hosting:project-icecream-9c598
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+USER CREDENTIALS:
+
+ADMIN:
+mrloodziarz@gmail.com
+silnehaslo
+
+USER1:
+wmoimnazwiskujestjednos@gmail.com
+strongpassword!
