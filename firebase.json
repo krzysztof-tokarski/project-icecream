@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "project-icecream-9c598",
-    "public": "public",
+    "public": "dist/project-icecream",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -13,5 +12,9 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

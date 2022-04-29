@@ -43,7 +43,10 @@ To get more help on the Angular CLI use `npm run ng` or go check out the [Angula
 
 <!--  -->
 
+ng build --prod
 firebase deploy --only hosting:project-icecream-9c598
+
+https://project-icecream-9c598.web.app/app
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
