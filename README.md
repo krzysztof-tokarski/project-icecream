@@ -50,6 +50,12 @@ https://project-icecream-9c598.web.app/app
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Requirements checklist:
+1. DONE;
+2. DONE;
+3. IN PROGRESS;
+
+
 USER CREDENTIALS:
 
 ADMIN:
@@ -59,3 +65,25 @@ silnehaslo
 USER1:
 wmoimnazwiskujestjednos@gmail.com
 strongpassword!
+
+USER2:
+ricardomilosusaftw@gmail.com
+stronkpass
+
+USER3:
+billyherringtonusaftw@gmail.com
+stronkpass
+
+USER4:
+vandarkholmedungeonkeeper@gmail.com
+stronkpass
+
+
+
+
+
+
+
+
+
+
