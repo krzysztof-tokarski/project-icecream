@@ -1,13 +1,13 @@
+import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDmknldActfY9SI1FbFKE2thRSR0urvbyo',
@@ -22,12 +22,14 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     StoreModule.forRoot({}, {}),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,15 +8,15 @@ import { RouterModule } from '@angular/router';
         path: 'auth',
         loadChildren: async () => (await import('./auth/auth.module')).AuthModule,
       },
-      {
-        path: 'app',
-        loadChildren: async () => (await import('./shell/shell.module')).ShellModule,
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'app',
-      },
+      // {
+      //   path: 'app',
+      //   loadChildren: async () => (await import('./shell/shell.module')).ShellModule,
+      // },
+      // {
+      //   path: '',
+      //   pathMatch: 'full',
+      //   redirectTo: 'app',
+      // },
       {
         path: '**',
         redirectTo: 'auth',
