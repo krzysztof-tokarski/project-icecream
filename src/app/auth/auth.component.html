@@ -1,8 +1,14 @@
-<div class="container">
-  <mat-card>
-    <mat-card-title>LOGIN</mat-card-title>
+<div class="wrapper">
+  <mat-card class="header-card">
+    <mat-card-header>
+      <mat-card-title class="header-card__title">🍦PROJECT ICECREAM🍦</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card class="login-card">
+    <mat-card-title class="login-card__title">LOGIN</mat-card-title>
     <mat-card-content>
-      <form>
+      <form class="login-card__form">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput />
@@ -11,8 +17,8 @@
           <mat-label>Password</mat-label>
           <input matInput />
         </mat-form-field>
+        <button mat-raised-button color="primary">SIGN IN</button>
       </form>
     </mat-card-content>
-    <mat-card-actions> </mat-card-actions>
   </mat-card>
 </div>
