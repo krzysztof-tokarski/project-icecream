@@ -12,8 +12,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatCommonModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const MATERIAL_COMPONENTS = [
+const ANGULAR_MODULES = [FormsModule, ReactiveFormsModule];
+
+const MATERIAL_MODULES = [
   MatToolbarModule,
   MatInputModule,
   MatCardModule,
@@ -30,7 +34,7 @@ const MATERIAL_COMPONENTS = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MATERIAL_COMPONENTS],
-  exports: [MATERIAL_COMPONENTS],
+  imports: [CommonModule, MATERIAL_MODULES, ANGULAR_MODULES],
+  exports: [MATERIAL_MODULES, ANGULAR_MODULES],
 })
 export class SharedModule {}

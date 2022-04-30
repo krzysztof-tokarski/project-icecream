@@ -91,9 +91,19 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-v13:build:production",
+            "firebaseProject": "project-icecream-9c598",
+            "firebaseHostingSite": "project-icecream-9c598"
+          }
         }
       }
     }
   },
-  "defaultProject": "project-icecream",
+  "defaultProject": "project-icecream"
 }

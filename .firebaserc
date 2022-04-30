@@ -2,5 +2,13 @@
   "projects": {
     "default": "project-icecream-9c598"
   },
-  "targets": {}
+  "targets": {
+    "project-icecream-9c598": {
+      "hosting": {
+        "angular-v13": [
+          "project-icecream-9c598"
+        ]
+      }
+    }
+  }
 }

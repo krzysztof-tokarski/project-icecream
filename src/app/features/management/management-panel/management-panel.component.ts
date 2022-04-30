@@ -6,7 +6,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./management-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManagementPanelComponent {
-  // loginForm!: FormGroup;
-  // constructor(private formBuider: FormBuilder) {}
-}
+export class ManagementPanelComponent {}

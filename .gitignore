@@ -43,3 +43,8 @@ Thumbs.db
 
 .env
 we-are-in-the-endgame-now.pdf
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

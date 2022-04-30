@@ -1,3 +1,4 @@
+import { FirebaseModule } from '@shared/firebase-module/firebase.module';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,7 @@ import { AddClientFormComponent } from './management-panel/add-client-form/add-c
   declarations: [ManagementPanelComponent, AddClientFormComponent],
   imports: [
     CommonModule,
+    FirebaseModule,
     SharedModule,
     RouterModule.forChild([
       {

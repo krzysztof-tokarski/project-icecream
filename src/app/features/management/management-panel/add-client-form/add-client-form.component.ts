@@ -1,5 +1,8 @@
-import { FormGroup } from '@angular/forms';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { AddClientFormValue } from './add-client-form-interface';
+import { AddClientFirebaseProxyService } from './add-client-firebase-proxy.service';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { AddClientFormGeneratorService } from './add-client-form-generator.service';
 
 @Component({
   selector: 'icy-add-client-form',
@@ -7,10 +10,19 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./add-client-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddClientFormComponent implements OnInit {
-  public form!: FormGroup;
+export class AddClientFormComponent {
+  @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
 
-  constructor() {}
+  public form: FormGroup = this.addClientFormGeneratorService.createForm();
 
-  ngOnInit(): void {}
+  constructor(
+    private addClientFormGeneratorService: AddClientFormGeneratorService,
+    private addClientFirebaseProxyService: AddClientFirebaseProxyService
+  ) {}
+
+  public onSubmit() {
+    const formValue: AddClientFormValue = this.form.value;
+    this.addClientFirebaseProxyService.addClient(formValue);
+    this.formGroupDirective.resetForm();
+  }
 }
