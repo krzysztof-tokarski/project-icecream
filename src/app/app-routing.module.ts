@@ -9,6 +9,11 @@ import { RouterModule } from '@angular/router';
         loadChildren: async () => (await import('./shell/shell.module')).ShellModule,
       },
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '',
+      },
+      {
         path: '**',
         redirectTo: '',
       },

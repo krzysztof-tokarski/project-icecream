@@ -24,6 +24,10 @@ import { NgModule } from '@angular/core';
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
           },
           {
+            path: 'ordering-panel',
+            loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
+          },
+          {
             path: '',
             pathMatch: 'full',
             redirectTo: 'auth',
