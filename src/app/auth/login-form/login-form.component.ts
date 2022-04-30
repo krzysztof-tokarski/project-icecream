@@ -3,6 +3,7 @@ import { LoginFormGeneratorService } from './login-form-generator.service';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { LoginFormValue } from './login-form.interface';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'icy-login-form',
@@ -21,8 +22,9 @@ export class LoginFormComponent {
   ) {}
 
   public onSubmit() {
+    const auth = getAuth();
     const formValue: LoginFormValue = this.form.value;
-    this.loginFormFirebaseProxyService.logIn(formValue);
+    this.loginFormFirebaseProxyService.signIn(formValue, auth);
     this.formGroupDirective.resetForm();
   }
 }

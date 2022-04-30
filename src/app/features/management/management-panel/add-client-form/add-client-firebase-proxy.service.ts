@@ -1,14 +1,14 @@
+import { Auth } from '@angular/fire/auth';
 import { AddClientFormValue } from './add-client-form.interface';
 import { Injectable } from '@angular/core';
 // import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Role } from '@features/management/types/role.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddClientFirebaseProxyService {
-  public async addClient(form: AddClientFormValue, auth: any) {
+  public async addClient(form: AddClientFormValue, auth: Auth) {
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then(userCredential => {
         const user = userCredential.user;

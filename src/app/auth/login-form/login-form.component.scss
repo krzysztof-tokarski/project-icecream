@@ -44,3 +44,11 @@
   }
 }
 
+  @media screen and (max-height: 500px){
+    .login-card {
+      position: fixed;
+      top: 150px;
+  }
+}
+
+

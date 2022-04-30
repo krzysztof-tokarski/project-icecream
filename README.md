@@ -53,8 +53,10 @@ firebase deploy --only hosting:project-icecream-9c598
 Requirements checklist:
 1. DONE!;
 2. DONE!;
-3. IN PROGRESS;
-5.2.1 - DONE!;
+3. IN PROGRESS (SEMI-DONE);
+4.2.1 (SEMI-DONE);
+5.2.1 (SEMI-DONE);
+5.2.2 - DONE!;
 
 
 USER CREDENTIALS:
