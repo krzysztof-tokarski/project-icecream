@@ -3,12 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@auth/*":["src/app/auth/*"],
+      "@environments/*": ["src/environments/*"],
+      "@features/*": ["src/app/features/*"],
       "@shared/*": ["src/app/shared/*"],
       "@shell/*":["src/app/shell/*"],
-      "@features/*": ["src/app/features/*"],
-      "@environments/*": ["src/environments/*"],
+      "@state/*":["src/app/state/*"],
       "@management/*":["src/app/features/management/*"],
-      "@ordering/*":["src/app/features/ordering/*"]
+      "@ordering/*":["src/app/features/ordering/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
