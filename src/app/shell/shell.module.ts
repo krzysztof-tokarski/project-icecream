@@ -1,7 +1,7 @@
-import { SharedModule } from '@shared/shared-module/shared.module';
-import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ShellComponent } from '@shell/shell.component';
+import { SharedModule } from '@shared/shared-module/shared.module';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [ShellComponent],
@@ -16,13 +16,21 @@ import { ShellComponent } from '@shell/shell.component';
         component: ShellComponent,
         children: [
           {
+            path: 'auth',
+            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
+          },
+          {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
           },
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'management-panel',
+            redirectTo: 'auth',
+          },
+          {
+            path: '**',
+            redirectTo: 'auth',
           },
         ],
       },
@@ -30,7 +38,10 @@ import { ShellComponent } from '@shell/shell.component';
         path: '',
         pathMatch: 'full',
         redirectTo: '',
-        // to do
+      },
+      {
+        path: '**',
+        redirectTo: '',
       },
     ]),
   ],

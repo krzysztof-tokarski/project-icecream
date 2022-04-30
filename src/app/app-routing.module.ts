@@ -4,23 +4,14 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      // {
-      //   path: 'auth',
-      //   loadChildren: async () => (await import('./auth/auth.module')).AuthModule,
-      // },
       {
-        path: 'app',
+        path: '',
         loadChildren: async () => (await import('./shell/shell.module')).ShellModule,
       },
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'app',
+        path: '**',
+        redirectTo: '',
       },
-      // {
-      //   path: '**',
-      //   redirectTo: 'auth',
-      // },
     ]),
   ],
   exports: [RouterModule],
