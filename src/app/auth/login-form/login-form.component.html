@@ -4,16 +4,16 @@
       <h2>LOGIN</h2>
     </mat-card-title>
     <mat-card-content>
-      <form class="login-card__form">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form" class="login-card__form">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput />
+          <input formControlName="email" matInput />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput />
+          <input formControlName="password" matInput />
         </mat-form-field>
-        <button mat-raised-button color="primary">SIGN IN</button>
+        <button [disabled]="form.invalid" mat-raised-button color="primary">SIGN IN</button>
       </form>
     </mat-card-content>
   </mat-card>

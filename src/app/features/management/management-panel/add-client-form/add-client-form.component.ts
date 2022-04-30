@@ -1,4 +1,4 @@
-import { AddClientFormValue } from './add-client-form-interface';
+import { AddClientFormValue } from './add-client-form.interface';
 import { AddClientFirebaseProxyService } from './add-client-firebase-proxy.service';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
