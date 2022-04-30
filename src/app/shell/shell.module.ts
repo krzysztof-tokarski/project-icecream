@@ -1,7 +1,7 @@
-import { RouterModule } from '@angular/router';
-import { ShellComponent } from '@shell/shell.component';
-import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '@shared/shared-module/shared.module';
+import { ShellComponent } from './shell.component';
 
 @NgModule({
   declarations: [ShellComponent],
