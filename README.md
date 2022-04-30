@@ -1,6 +1,6 @@
 # Angular v13
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+This project was generated with [Angular CLI](//github.com/angular/angular-cli) version 13.2.6.
 
 For best DX install `@recommended` VSC extensions
 
@@ -31,7 +31,7 @@ Run `npm run build:stats` to create build stats file and run `npm run webpack:an
 
 ## Running unit tests
 
-Run `npm test` to execute the unit tests via [JEST](https://jestjs.io/) and [TESTING LIBRARY](https://testing-library.com/docs/angular-testing-library/intro).
+Run `npm test` to execute the unit tests via [JEST](//jestjs.io/) and [TESTING LIBRARY](//testing-library.com/docs/angular-testing-library/intro).
 
 ## Running end-to-end tests
 
@@ -39,14 +39,14 @@ N/A
 
 ## Further help
 
-To get more help on the Angular CLI use `npm run ng` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `npm run ng` or go check out the [Angular CLI Overview and Command Reference](//angular.io/cli) page.
 
 <!--  -->
 
 ng build --prod
 firebase deploy --only hosting:project-icecream-9c598
 
-https://project-icecream-9c598.web.app/app
+//project-icecream-9c598.web.app/app
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

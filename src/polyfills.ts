@@ -11,7 +11,7 @@
  * automatically update themselves. This includes recent versions of Safari, Chrome (including
  * Opera), Edge on the desktop, and iOS and Chrome on mobile.
  *
- * Learn more in https://angular.io/guide/browser-support
+ * Learn more in //angular.io/guide/browser-support
  */
 
 /***************************************************************************************************
@@ -45,8 +45,7 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
