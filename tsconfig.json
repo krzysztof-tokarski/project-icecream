@@ -4,8 +4,10 @@
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["src/app/shared/*"],
+      "@shell/*":["src/app/shell/*"],
       "@features/*": ["src/app/features/*"],
-      "@environments/*": ["src/environments/*"]
+      "@environments/*": ["src/environments/*"],
+      "@management/*":["src/app/features/management/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
