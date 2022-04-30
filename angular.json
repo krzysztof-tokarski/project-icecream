@@ -96,7 +96,4 @@
     }
   },
   "defaultProject": "project-icecream",
-  "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
-  }
 }
