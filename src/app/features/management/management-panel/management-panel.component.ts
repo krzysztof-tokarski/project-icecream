@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-// import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'icy-management-panel',
@@ -7,10 +6,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./management-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManagementPanelComponent implements OnInit {
+export class ManagementPanelComponent {
   // loginForm!: FormGroup;
-
   // constructor(private formBuider: FormBuilder) {}
-
-  ngOnInit(): void {}
 }

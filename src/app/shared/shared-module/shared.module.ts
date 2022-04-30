@@ -11,6 +11,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatCommonModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 const MATERIAL_COMPONENTS = [
   MatToolbarModule,
@@ -24,6 +25,7 @@ const MATERIAL_COMPONENTS = [
   MatSelectModule,
   MatOptionModule,
   MatCommonModule,
+  MatDividerModule,
 ];
 
 @NgModule({
