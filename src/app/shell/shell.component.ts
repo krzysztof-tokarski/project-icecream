@@ -1,3 +1,5 @@
+import { AuthService } from './../auth/auth.service';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AppState } from '@state/app.state';
@@ -9,9 +11,11 @@ import { AppState } from '@state/app.state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellComponent {
-  public user$ = this.store$.select(appState => appState.user.currentUser);
-  public auth = this.store$.select(appState => appState.auth.isAuth);
-  public user = this.store$.select(appState => appState.user.currentUser);
+  public auth = this.store.select(appState => appState.auth.isAuth);
 
-  constructor(private store$: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router, private authService: AuthService) {}
+
+  public signOut() {
+    this.authService.signOut();
+  }
 }

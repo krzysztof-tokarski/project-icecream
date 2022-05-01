@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { IsAuthGuard } from './../shared/shared-module/guards/is-auth.guard';
+import { IsAuthGuard } from './guards/is-auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared-module/shared.module';
@@ -19,8 +19,9 @@ import { ShellComponent } from './shell.component';
         component: ShellComponent,
         children: [
           {
-            path: 'auth',
-            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
+            path: 'ordering-panel',
+            loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
+            canActivate: [IsAuthGuard],
           },
           {
             path: 'management-panel',
@@ -28,18 +29,17 @@ import { ShellComponent } from './shell.component';
             canActivate: [IsAuthGuard],
           },
           {
-            path: 'ordering-panel',
-            loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
-            canActivate: [IsAuthGuard],
+            path: 'auth',
+            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
           },
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'auth',
+            redirectTo: 'ordering-panel',
           },
           {
             path: '**',
-            redirectTo: 'auth',
+            redirectTo: 'ordering-panel',
           },
         ],
       },

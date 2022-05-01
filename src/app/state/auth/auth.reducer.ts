@@ -3,7 +3,7 @@ import { AuthActions } from './auth.actions';
 import { AuthState } from './auth.state';
 
 const initialState: AuthState = {
-  isAuth: !!localStorage.getItem('user'),
+  isAuth: false,
 };
 
 export const authReducer = createReducer(

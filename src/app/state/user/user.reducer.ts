@@ -3,7 +3,8 @@ import { UserActions } from './user.actions';
 import { UserState } from './user.state';
 
 const initialState: UserState = {
-  currentUser: null,
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  currentUser: JSON.parse(localStorage.getItem('user')!),
 };
 
 export const userReducer = createReducer(

@@ -1,4 +1,4 @@
-import { LoginFormFirebaseProxyService } from './login-form-firebase-proxy.service';
+import { AuthService } from '../auth.service';
 import { LoginFormGeneratorService } from './login-form-generator.service';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
@@ -16,15 +16,11 @@ export class LoginFormComponent {
 
   public form: FormGroup = this.loginFormGeneratorService.createForm();
 
-  constructor(
-    private loginFormGeneratorService: LoginFormGeneratorService,
-    private loginFormFirebaseProxyService: LoginFormFirebaseProxyService
-  ) {}
+  constructor(private loginFormGeneratorService: LoginFormGeneratorService, private authService: AuthService) {}
 
   public onSubmit() {
-    const auth = getAuth();
     const formValue: LoginFormValue = this.form.value;
-    this.loginFormFirebaseProxyService.signIn(formValue, auth);
+    this.authService.signIn(formValue);
     this.formGroupDirective.resetForm();
   }
 }

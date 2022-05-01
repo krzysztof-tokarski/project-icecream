@@ -1,12 +1,10 @@
 <header>
   <h1>PROJECT ICECREAM</h1>
+  <button *ngIf="auth | async" mat-raised-button color="basic" (click)="signOut()">SIGN OUT</button>
 </header>
 <mat-divider></mat-divider>
 
 <main>
-  <div style="position: absolute">
-    <p>{{ auth | async }}</p>
-    <p>{{ (user | async)?.uid }}</p>
-  </div>
+  <div style="position: absolute"></div>
   <router-outlet></router-outlet>
 </main>
