@@ -4,7 +4,9 @@
 <mat-divider></mat-divider>
 
 <main>
-  <p>{{ auth | async }}</p>
-  <p>{{ (user | async)?.uid }}</p>
+  <div style="position: absolute">
+    <p>{{ auth | async }}</p>
+    <p>{{ (user | async)?.uid }}</p>
+  </div>
   <router-outlet></router-outlet>
 </main>
