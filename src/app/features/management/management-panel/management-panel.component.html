@@ -1,9 +1,10 @@
 <div class="wrapper">
-  <mat-card class="header-card">
+  <div class="wrapper__header">
     <h2>MANAGEMENT PANEL</h2>
-  </mat-card>
-  <mat-card class="buttons-card">
-    <button routerLink="add-client" mat-raised-button color="primary">ADD NEW CLIENT</button>
-  </mat-card>
+    <mat-toolbar>
+      <button routerLink="add-client" mat-raised-button color="primary">ADD NEW CLIENT</button>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+  </div>
   <router-outlet></router-outlet>
 </div>

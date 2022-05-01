@@ -23,12 +23,12 @@ import { ShellComponent } from './shell.component';
           {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
-            canActivate: [IsAuthGuard],
+            // canActivate: [IsAuthGuard],
           },
           {
             path: 'ordering-panel',
             loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
-            canActivate: [IsAuthGuard],
+            // canActivate: [IsAuthGuard],
           },
           {
             path: '',
