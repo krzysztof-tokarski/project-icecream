@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { IsAuthGuard } from './../shared/shared-module/guards/is-auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -7,6 +8,7 @@ import { ShellComponent } from './shell.component';
 @NgModule({
   declarations: [ShellComponent],
   imports: [
+    CommonModule,
     SharedModule,
     RouterModule.forChild([
       // tutaj zacznij dodawać routing aplikacji
@@ -23,12 +25,12 @@ import { ShellComponent } from './shell.component';
           {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
-            // canActivate: [IsAuthGuard],
+            canActivate: [IsAuthGuard],
           },
           {
             path: 'ordering-panel',
             loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
-            // canActivate: [IsAuthGuard],
+            canActivate: [IsAuthGuard],
           },
           {
             path: '',
