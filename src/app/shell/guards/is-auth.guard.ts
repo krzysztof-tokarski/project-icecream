@@ -15,7 +15,6 @@ export class IsAuthGuard implements CanActivate {
   public canActivate() {
     return this.store.select(selectIsAuth).pipe(
       tap(isAuth => {
-        console.log(isAuth);
         if (isAuth) {
           return;
         } else {

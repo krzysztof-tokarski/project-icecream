@@ -4,6 +4,8 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { AddClientFormGeneratorService } from './add-client-form-generator.service';
 import { getAuth } from 'firebase/auth';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
+import { Role } from '@features/management/types/role.enum';
 
 @Component({
   selector: 'icy-add-client-form',
@@ -22,9 +24,8 @@ export class AddClientFormComponent {
   ) {}
 
   public onSubmit() {
-    const auth = getAuth();
     const formValue: AddClientFormValue = this.form.value;
-    this.addClientFirebaseProxyService.addClient(formValue, auth);
+    this.addClientFirebaseProxyService.addClient(formValue);
     this.formGroupDirective.resetForm();
   }
 }

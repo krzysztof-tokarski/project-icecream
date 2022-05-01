@@ -32,7 +32,8 @@ export class AuthService {
         this.store.dispatch(AuthActions.setAuth());
         // this.store.dispatch(UserActions.signInCurrentUser(userCredential));
         const userFromStorage: User | null = JSON.parse(localStorage.getItem('user') as string);
-        if (userFromStorage?.uid === 'SQgYGivSXocRUDHcJkRqhGpYBQn2') {
+        console.log(userFromStorage);
+        if (userFromStorage?.uid === '8JQOCItqF7fwWLVG9HAU3BvGKmt2') {
           this.router.navigate(['app', 'management-panel']);
         } else {
           this.router.navigate(['app', 'ordering-panel']);

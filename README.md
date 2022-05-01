@@ -61,18 +61,14 @@ Requirements checklist:
 Outstanding:
 
 
-
+https://docs.google.com/document/d/171pXYSRsDyT7DqGVmuK-9wy1RbuCvYIynLe5t_wOi4k/edit
 
 
 USER CREDENTIALS:
 
 ADMIN:
 mrloodziarz@gmail.com
-silnehaslo
-
-USER1:
-wmoimnazwiskujestjednos@gmail.com
-strongpassword!
+stronkpass
 
 USER2:
 ricardomilosusaftw@gmail.com
@@ -87,11 +83,9 @@ vandarkholmedungeonkeeper@gmail.com
 stronkpass
 
 
-
-
-
-
-
+USER1:
+wmoimnazwiskujestjednos@gmail.com
+strongpassword!
 
 
 
