@@ -1,3 +1,4 @@
+import { RoleGuard } from './guards/role.guard';
 import { CommonModule } from '@angular/common';
 import { IsAuthGuard } from './guards/is-auth.guard';
 import { NgModule } from '@angular/core';
@@ -15,22 +16,19 @@ import { ShellComponent } from './shell.component';
       // nie zapomnij o przekierwaniu na domyślny path z  path === ''
 
       {
-        path: '',
+        path: 'app',
         component: ShellComponent,
+        canActivate: [IsAuthGuard],
         children: [
-          {
-            path: 'ordering-panel',
-            loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
-            canActivate: [IsAuthGuard],
-          },
           {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
-            canActivate: [IsAuthGuard],
+            canActivate: [RoleGuard],
           },
           {
-            path: 'auth',
-            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
+            path: 'ordering-panel',
+            loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
+            // canActivate: [RoleGuard],
           },
           {
             path: '',
@@ -44,13 +42,32 @@ import { ShellComponent } from './shell.component';
         ],
       },
       {
+        path: 'auth',
+        component: ShellComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
+          },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'auth',
+          },
+          {
+            path: '**',
+            redirectTo: 'auth',
+          },
+        ],
+      },
+      {
         path: '',
         pathMatch: 'full',
-        redirectTo: '',
+        redirectTo: 'app',
       },
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'app',
       },
     ]),
   ],

@@ -9,10 +9,10 @@ const initialState: UserState = {
 
 export const userReducer = createReducer(
   initialState,
-  on(UserActions.signInCurrentUser, (state, userCredential) => {
+  on(UserActions.signInCurrentUser, (state, user) => {
     return {
       ...state,
-      currentUser: userCredential.user,
+      currentUser: user,
     };
   }),
   on(UserActions.signOutCurrentUser, state => {

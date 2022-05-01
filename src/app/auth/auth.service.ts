@@ -33,9 +33,9 @@ export class AuthService {
         // this.store.dispatch(UserActions.signInCurrentUser(userCredential));
         const userFromStorage: User | null = JSON.parse(localStorage.getItem('user') as string);
         if (userFromStorage?.uid === 'SQgYGivSXocRUDHcJkRqhGpYBQn2') {
-          this.router.navigate(['management-panel']);
+          this.router.navigate(['app', 'management-panel']);
         } else {
-          this.router.navigate(['ordering-panel']);
+          this.router.navigate(['app', 'ordering-panel']);
         }
       })
       .catch(error => {
@@ -56,6 +56,7 @@ export class AuthService {
   private setStateAfterAuth(user: User) {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
-    this.router.navigate(['ordering-panel']);
+    this.store.dispatch(UserActions.signInCurrentUser(user));
+    this.router.navigate(['app']);
   }
 }
