@@ -18,7 +18,7 @@ import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { AppState } from './state/app.state';
 
 import { authReducer } from '@state/auth/auth.reducer';
-import { userReducer } from '@state/user/user.reducer';
+// import { userReducer } from '@state/user/user.reducer';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDmknldActfY9SI1FbFKE2thRSR0urvbyo',
@@ -47,7 +47,7 @@ const firebaseConfig = {
     providePerformance(() => getPerformance()),
     StoreModule.forRoot<AppState>({
       auth: authReducer,
-      user: userReducer,
+      // user: userReducer,
     }),
   ],
   providers: [],

@@ -28,7 +28,6 @@ import { ShellComponent } from './shell.component';
           {
             path: 'ordering-panel',
             loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
-            // canActivate: [RoleGuard],
           },
           {
             path: '',

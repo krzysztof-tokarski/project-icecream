@@ -57,6 +57,6 @@ export class AuthService {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    this.router.navigate(['app']);
+    this.router.navigate(['app', 'management-panel']);
   }
 }
