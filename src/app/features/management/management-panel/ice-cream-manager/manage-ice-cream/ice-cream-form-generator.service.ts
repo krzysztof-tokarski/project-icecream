@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
-export class AddIceCreamFormGeneratorService {
+export class IceCreamFormGeneratorService {
   constructor(private formBuilder: FormBuilder) {}
 
   public createForm() {

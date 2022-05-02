@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <mat-card class="form-card">
+    <mat-card-title class="form-card__title">
+      <h3>DELETE ICE CREAM</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-card__form">
+        <mat-form-field appearance="fill">
+          <mat-label>Ice Cream to be deleted</mat-label>
+          <mat-hint align="start"
+            >Enter the name of the Ice Cream that you want deleted (this input is case sensitive)</mat-hint
+          >
+          <input placeholder="Name of the Ice Cream to be deleted" formControlName="name" matInput />
+        </mat-form-field>
+        <button [disabled]="form.invalid" mat-raised-button color="warn">DELETE ICE CREAM</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

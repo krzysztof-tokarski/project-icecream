@@ -15,6 +15,5 @@ export class UserService {
 
   public setUser(user: Seller) {
     this.user = new BehaviorSubject(user);
-    console.log(user);
   }
 }

@@ -1,9 +1,4 @@
-import { Role } from './role.enum';
+import { Seller } from '@shared/types/seller.interface';
+import { Client } from './client.interface';
 
-export interface User {
-  id: number;
-  displayName: string;
-  email: string;
-  password: string;
-  role: Role;
-}
+export type User = Seller | Client;
