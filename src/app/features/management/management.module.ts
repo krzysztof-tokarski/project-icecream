@@ -1,3 +1,5 @@
+import { AssignLocalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/assign-local-units/assign-local-units.component';
+import { SetGlobalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/set-global-units/set-global-units.component';
 import { IceCreamListComponent } from './management-panel/ice-cream-manager/ice-cream-list/ice-cream-list.component';
 import { IceCreamManagerComponent } from './management-panel/ice-cream-manager/ice-cream-manager.component';
 import { AddIceCreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/add-ice-cream-form/add-ice-cream-form.component';
@@ -47,6 +49,14 @@ import { DeleteIceCreamFormComponent } from './management-panel/ice-cream-manage
               {
                 path: 'icecream-list',
                 component: IceCreamListComponent,
+              },
+              {
+                path: 'global-units',
+                component: SetGlobalUnitsComponent,
+              },
+              {
+                path: 'local-units',
+                component: AssignLocalUnitsComponent,
               },
             ],
           },

@@ -67,7 +67,7 @@ export class AuthService {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     // this.store.dispatch(UserActions.signInCurrentUser(user));
-    this.router.navigateByUrl('app/management-panel/icecream-manager/icecream-list');
+    this.router.navigateByUrl('app/management-panel/icecream-manager/global-units');
     // this.router.navigate(['app', 'ordering-panel']);
   }
 
