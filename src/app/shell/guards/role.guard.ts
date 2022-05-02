@@ -1,24 +1,32 @@
-import { Seller } from '../../shared/models/user/seller.interface';
 import { Role } from '@shared/models/user/role.enum';
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
-import { User } from 'firebase/auth';
+import { map, tap } from 'rxjs';
+import { UserService } from '@auth/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate {
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(private router: Router, private store: Store<AppState>, private userService: UserService) {}
 
-  public canActivate(): any {
-    const userFromStorage: Seller = JSON.parse(localStorage.getItem('user')!);
-    console.log(userFromStorage);
-    if (userFromStorage.role != Role.Seller) {
-      return this.router.navigate(['ordering-panel']);
-    } else {
-      // return this.router.navigate(['app', 'ordering-panel']);
-    }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+  public canActivate(route: ActivatedRouteSnapshot) {
+    const canActivateRoles = route.data['roles'] as Role[];
+
+    return this.userService.user$.pipe(
+      map(({ role }) => canActivateRoles.includes(role)),
+      tap(canActivate => {
+        console.log(canActivate);
+        if (canActivate) {
+          return;
+        }
+
+        alert('Ta opcja dostepna jest dla użytkowiników o roli: ' + canActivateRoles.join(', '));
+      })
+    );
   }
 }

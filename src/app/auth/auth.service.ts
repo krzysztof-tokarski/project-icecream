@@ -45,13 +45,16 @@ export class AuthService {
     this.router.navigate(['auth']);
   }
 
-  private async setStateAfterAuth(user: UserType) {
+  private setStateAfterAuth(user: UserType) {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    this.router.navigateByUrl('app');
+    if (user.role !== Role.Client) {
+      this.router.navigateByUrl('app/management-panel');
+    } else {
+      this.router.navigateByUrl('app/ordering-panel');
+    }
   }
-  // this.router.navigateByUrl('app/management-panel/icecream-manager/global-units');
 
   private async getUserFromDB(uid: string) {
     const docSnap = await getDoc(doc(getFirestore(), 'users', uid));

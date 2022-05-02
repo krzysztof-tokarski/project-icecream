@@ -1,7 +1,7 @@
+import { UserType } from './../../shared/models/user/user.type';
 import { createAction, props } from '@ngrx/store';
-import { User } from 'firebase/auth';
 
 export const UserActions = {
-  signInCurrentUser: createAction('[User] Sign-in user', props<any>()),
+  signInCurrentUser: createAction('[User] Sign-in user', props<UserType>()),
   signOutCurrentUser: createAction('[User] Sign-out user'),
 };

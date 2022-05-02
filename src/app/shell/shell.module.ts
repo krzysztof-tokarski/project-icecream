@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { ShellComponent } from './shell.component';
+import { Role } from '@shared/models/user/role.enum';
 
 @NgModule({
   declarations: [ShellComponent],
@@ -23,11 +24,14 @@ import { ShellComponent } from './shell.component';
           {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
-            // canActivate: [RoleGuard],
+            canActivate: [RoleGuard],
+            data: { roles: [Role.Seller] },
           },
           {
             path: 'ordering-panel',
             loadChildren: async () => await (await import('@ordering/ordering.module')).OrderingModule,
+            canActivate: [RoleGuard],
+            data: { roles: [Role.Client] },
           },
           {
             path: '',

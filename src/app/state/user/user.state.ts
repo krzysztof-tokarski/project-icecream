@@ -1,5 +1,5 @@
-import { User } from 'firebase/auth';
+import { UserType } from '@shared/models/user/user.type';
 
 export interface UserState {
-  currentUser: any;
+  currentUser: UserType | null;
 }

@@ -3,5 +3,5 @@ import { UserState } from './user/user.state';
 
 export interface AppState {
   auth: AuthState;
-  // user: UserState;
+  user: UserState;
 }
