@@ -37,16 +37,16 @@ import { DeleteIceCreamFormComponent } from './management-panel/ice-cream-manage
             component: IceCreamManagerComponent,
             children: [
               {
+                path: 'add-icecream',
+                component: AddIceCreamFormComponent,
+              },
+              {
                 path: 'delete-icecream',
                 component: DeleteIceCreamFormComponent,
               },
               {
                 path: 'icecream-list',
                 component: IceCreamListComponent,
-              },
-              {
-                path: 'add-icecream',
-                component: AddIceCreamFormComponent,
               },
             ],
           },

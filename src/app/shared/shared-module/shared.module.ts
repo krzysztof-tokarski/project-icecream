@@ -14,6 +14,8 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
 
 const ANGULAR_MODULES = [FormsModule, ReactiveFormsModule];
 
@@ -30,6 +32,8 @@ const MATERIAL_MODULES = [
   MatOptionModule,
   MatCommonModule,
   MatDividerModule,
+  MatProgressSpinnerModule,
+  MatListModule,
 ];
 
 @NgModule({

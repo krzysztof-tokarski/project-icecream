@@ -9,12 +9,10 @@ import { Icecream } from '@shared/types/icecream.interface';
 export class IceCreamListComponent implements OnInit {
   public icecreamList!: Icecream[];
 
-  public async ngOnInit(): Promise<void> {
+  public ngOnInit() {
     const userFromLocalStorage = JSON.parse(localStorage.getItem('user')!);
     console.log(userFromLocalStorage);
 
-    this.icecreamList = userFromLocalStorage.data.icecreamList;
-
-    console.log(this.icecreamList);
+    this.icecreamList = userFromLocalStorage.icecreamList;
   }
 }
