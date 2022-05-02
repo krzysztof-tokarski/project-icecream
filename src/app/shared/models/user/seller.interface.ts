@@ -1,8 +1,8 @@
-import { Icecream } from './icecream.interface';
+import { Icecream } from '../ice-cream/icecream.interface';
 import { Role } from './role.enum';
 
 export interface Seller {
-  clientList: any[];
+  clientList: string[];
   displayName: string;
   icecreamList: Icecream[];
   orders: any[];

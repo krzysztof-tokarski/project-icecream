@@ -1,5 +1,5 @@
-import { Seller } from './../../shared/types/seller.interface';
-import { Role } from '@shared/types/role.enum';
+import { Seller } from '../../shared/models/user/seller.interface';
+import { Role } from '@shared/models/user/role.enum';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Store } from '@ngrx/store';

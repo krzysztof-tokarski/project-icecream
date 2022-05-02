@@ -1,4 +1,4 @@
-import { Icecream } from '@shared/types/icecream.interface';
+import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { Timestamp } from 'firebase/firestore';
 import { Role } from './role.enum';
 export interface Client {

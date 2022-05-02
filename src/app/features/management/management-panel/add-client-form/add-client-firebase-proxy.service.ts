@@ -3,8 +3,17 @@ import { AddClientFormValue } from './add-client-form.interface';
 import { Injectable } from '@angular/core';
 // import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { addDoc, collection, doc, getFirestore, serverTimestamp, setDoc } from 'firebase/firestore';
-import { Role } from '@shared/types/role.enum';
+import {
+  addDoc,
+  arrayUnion,
+  collection,
+  doc,
+  getFirestore,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
+import { Role } from '@shared/models/user/role.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +28,7 @@ export class AddClientFirebaseProxyService {
     });
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, form.email, form.password)
-      .then(userCredential => {
+      .then(async userCredential => {
         setDoc(doc(getFirestore(), 'clients', userCredential.user.uid), {
           sellerUid: sellerUid,
           role: Role.Client,
@@ -27,6 +36,11 @@ export class AddClientFirebaseProxyService {
           favIcecreamList: [],
           orders: [],
           timestamp: serverTimestamp(),
+        });
+        const docRef = doc(getFirestore(), 'sellers', sellerUid);
+
+        await updateDoc(docRef, {
+          clientList: arrayUnion(userCredential.user.uid),
         });
       })
       .catch(error => {

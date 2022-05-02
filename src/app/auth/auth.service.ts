@@ -1,4 +1,4 @@
-import { Seller } from './../shared/types/seller.interface';
+import { Seller } from '../shared/models/user/seller.interface';
 import { UserService } from './user.service';
 import { LoginFormValue } from './login-form/login-form.interface';
 import { Injectable } from '@angular/core';
@@ -11,7 +11,7 @@ import { AuthActions } from 'src/app/state/auth/auth.actions';
 import { getAuth, signOut } from 'firebase/auth';
 import { UserActions } from '@state/user/user.actions';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { Role } from '@shared/types/role.enum';
+import { Role } from '@shared/models/user/role.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +68,7 @@ export class AuthService {
     this.store.dispatch(AuthActions.setAuth());
     // this.store.dispatch(UserActions.signInCurrentUser(user));
     this.router.navigateByUrl('app/management-panel/icecream-manager/global-units');
+    // this.router.navigateByUrl('app/management-panel/icecream-manager/icecream-list');
     // this.router.navigate(['app', 'ordering-panel']);
   }
 

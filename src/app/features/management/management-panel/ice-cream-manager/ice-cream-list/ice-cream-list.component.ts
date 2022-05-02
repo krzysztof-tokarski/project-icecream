@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Icecream } from '@shared/types/icecream.interface';
+import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 @Component({
   selector: 'icy-ice-cream-list',
   templateUrl: './ice-cream-list.component.html',

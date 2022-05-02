@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { Icecream } from '@shared/types/icecream.interface';
+import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { arrayUnion, doc, getFirestore, updateDoc } from 'firebase/firestore';
 import { IceCreamFormGeneratorService } from '../ice-cream-form-generator.service';
 

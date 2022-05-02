@@ -1,14 +1,9 @@
-.add-user-card{
+.card{
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 20px;
   width: 400px;
-
-  &__title {
-    text-align: center;
-    font-weight: bold;
-  }
 
   &__form {
     display: flex;

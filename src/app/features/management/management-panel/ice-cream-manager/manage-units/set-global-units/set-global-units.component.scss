@@ -1,0 +1,32 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  width: 400px;
+}
+
+mat-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+}
+
+mat-list-item{
+  display: flex;
+}
+
+p {
+  flex: 1;
+}
