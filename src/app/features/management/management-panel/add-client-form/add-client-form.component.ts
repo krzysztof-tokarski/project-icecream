@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { AddClientFormGeneratorService } from './add-client-form-generator.service';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
-import { Role } from '@features/management/types/role.enum';
+import { Role } from '@shared/types/role.enum';
 
 @Component({
   selector: 'icy-add-client-form',

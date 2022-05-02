@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 // import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection, doc, getFirestore, serverTimestamp, setDoc } from 'firebase/firestore';
-import { Role } from '@features/management/types/role.enum';
+import { Role } from '@shared/types/role.enum';
 
 @Injectable({
   providedIn: 'root',

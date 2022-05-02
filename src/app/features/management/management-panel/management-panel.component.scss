@@ -15,25 +15,34 @@
 h2 {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   width: 100%;
   background-color: rgb(245, 244, 244);
   color: #1E2024;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2.25em;
   letter-spacing: 5px;
-  height: 2em;
+  height: 2.5em;
   padding: 0;
   margin: 0;
 }
 
 mat-toolbar{
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15px;
   padding: 0;
   max-height: 56px;
 }
+
+// mat-toolbar > * {
+//   width: 200px;
+//   position: 0;
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
 
 mat-divider {
   width: 100%;

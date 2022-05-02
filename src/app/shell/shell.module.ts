@@ -23,7 +23,7 @@ import { ShellComponent } from './shell.component';
           {
             path: 'management-panel',
             loadChildren: async () => await (await import('@management/management.module')).ManagementModule,
-            canActivate: [RoleGuard],
+            // canActivate: [RoleGuard],
           },
           {
             path: 'ordering-panel',

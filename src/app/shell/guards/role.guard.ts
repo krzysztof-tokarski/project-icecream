@@ -1,3 +1,5 @@
+import { Seller } from './../../shared/types/seller.interface';
+import { Role } from '@shared/types/role.enum';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -11,12 +13,12 @@ export class RoleGuard implements CanActivate {
   constructor(private router: Router, private store: Store<AppState>) {}
 
   public canActivate(): any {
-    let value;
-    const userFromStorage = JSON.parse(localStorage.getItem('user')!) as User;
-    if (userFromStorage.uid.match('8JQOCItqF7fwWLVG9HAU3BvGKmt2')) {
-      return (value = true);
+    const userFromStorage: Seller = JSON.parse(localStorage.getItem('user')!);
+    console.log(userFromStorage);
+    if (userFromStorage.role != Role.Seller) {
+      return this.router.navigate(['ordering-panel']);
     } else {
-      return this.router.navigate(['app', 'ordering-panel']);
+      // return this.router.navigate(['app', 'ordering-panel']);
     }
   }
 }

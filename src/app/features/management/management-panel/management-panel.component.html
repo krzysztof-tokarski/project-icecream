@@ -1,10 +1,25 @@
 <div class="wrapper">
   <div class="wrapper__header">
-    <h2>MANAGEMENT PANEL</h2>
-    <mat-toolbar>
-      <button routerLink="add-client" mat-raised-button color="primary">ADD NEW CLIENT</button>
+    <mat-toolbar color="primary">
+      <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>MANAGEMENT PANEL</span>
     </mat-toolbar>
-    <mat-divider></mat-divider>
+    <mat-menu #menu="matMenu">
+      <button routerLink="add-client" mat-menu-item>ADD NEW CLIENT</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="icecreammananger">ICE CREAM MANAGER</button>
+      <button mat-menu-item [matMenuTriggerFor]="ordermanager">ORDER MANAGER</button>
+    </mat-menu>
+    <mat-menu #icecreammananger="matMenu">
+      <button routerLink="icecream-list" mat-menu-item>ICE CREAM LIST</button>
+      <button mat-menu-item>ICE CREAM UNITS</button>
+    </mat-menu>
+    <mat-menu #ordermanager="matMenu">
+      <button mat-menu-item>SIMPLE ORDERS LIST</button>
+      <button mat-menu-item>ORDERS-BY-CLIENTS LIST</button>
+    </mat-menu>
   </div>
   <router-outlet></router-outlet>
 </div>

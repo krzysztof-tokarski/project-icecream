@@ -1,3 +1,4 @@
+import { IceCreamListComponent } from './management-panel/ice-cream-list/ice-cream-list.component';
 import { FirebaseModule } from '@shared/firebase-module/firebase.module';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AddClientFormComponent } from './management-panel/add-client-form/add-client-form.component';
 
 @NgModule({
-  declarations: [ManagementPanelComponent, AddClientFormComponent],
+  declarations: [ManagementPanelComponent, AddClientFormComponent, IceCreamListComponent],
   imports: [
     CommonModule,
     FirebaseModule,
@@ -20,6 +21,10 @@ import { AddClientFormComponent } from './management-panel/add-client-form/add-c
           {
             path: 'add-client',
             component: AddClientFormComponent,
+          },
+          {
+            path: 'icecream-list',
+            component: IceCreamListComponent,
           },
         ],
       },
