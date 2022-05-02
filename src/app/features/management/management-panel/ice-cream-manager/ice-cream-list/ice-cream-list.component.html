@@ -1,5 +1,5 @@
-<mat-card class="card">
-  <mat-list *ngIf="icecreamList; else loading">
+<mat-card *ngIf="icecreamList; else loading" class="card">
+  <mat-list>
     <mat-card-title>ICE CREAM LIST</mat-card-title>
     <mat-list-item *ngFor="let icecream of icecreamList; let index = index">
       <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item

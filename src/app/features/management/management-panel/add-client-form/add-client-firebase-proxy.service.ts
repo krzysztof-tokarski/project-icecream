@@ -33,21 +33,32 @@ export class AddClientFirebaseProxyService {
           sellerUid: sellerUid,
           role: Role.Client,
           displayName: form.displayName,
-          favIcecreamList: [],
-          orders: [],
           timestamp: serverTimestamp(),
         });
-        const docRef = doc(getFirestore(), 'sellers', sellerUid);
 
-        await updateDoc(docRef, {
-          clientList: arrayUnion(userCredential.user.uid),
+        setDoc(doc(getFirestore(), 'sellers', sellerUid, 'clientList', userCredential.user.uid), {
+          clientUid: userCredential.user.uid,
         });
+
+        // await addDoc(doc(getFirestore(), 'sellers', sellerUid, 'clientList'), {
+        //   clientUid: userCredential.user.uid,
+        // });
+
+        // const docRef = doc(getFirestore(), 'sellers', sellerUid);
+
+        // await updateDoc(docRef, {
+        //   clientList: arrayUnion(userCredential.user.uid),
+        // });
       })
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error('Error adding new user to the database', errorCode, errorMessage);
       });
+
+    // const docSnaper = await getDoc(
+    //   doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2', 'icecreamList', 'y7Ga799GmuWFJrDEsRf2')
+    // );
 
     // addDoc(collection(getFirestore(), 'users'), {
     //   // sellerUid:

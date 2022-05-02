@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { User } from '@shared/models/user/user.type';
+import { UserType } from '@shared/models/user/user.type';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private user!: BehaviorSubject<User>;
+  private user!: BehaviorSubject<UserType>;
 
   public get user$() {
     return this.user.asObservable();
   }
 
-  public setUser(user: User) {
+  public setUser(user: UserType) {
     this.user = new BehaviorSubject(user);
   }
 }

@@ -28,7 +28,7 @@
     "target": "es2017",
     "module": "es2020",
     "lib": ["es2021", "dom"],
-    "types": ["jest", "@testing-library/jest-dom"],
+    "types": ["jest", "@testing-library/jest-dom", "node"],
     "esModuleInterop": true
   },
   "angularCompilerOptions": {

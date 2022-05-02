@@ -23,6 +23,8 @@ export class DeleteIceCreamFormComponent {
     const deletedIcecream: Icecream = {
       name: this.form.controls['name'].value,
       units: [],
+      sellerUid: '',
+      id: '',
     };
 
     const docRef = doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2');

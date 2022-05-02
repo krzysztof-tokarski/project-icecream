@@ -5,6 +5,9 @@ import { Unit } from '@shared/models/ice-cream/unit.interface';
 import { UnitFormGeneratorService } from './unit-form-generator.service';
 import { arrayUnion, doc, getFirestore, updateDoc } from 'firebase/firestore';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const generateUniqueId = require('generate-unique-id');
+
 @Component({
   selector: 'icy-set-global-units',
   templateUrl: './set-global-units.component.html',
@@ -22,6 +25,11 @@ export class SetGlobalUnitsComponent implements OnInit {
     const newUnit: Unit = {
       name: this.form.controls['name'].value,
       value: this.form.controls['value'].value,
+      sellerUid: '',
+      id: generateUniqueId({
+        length: 28,
+        useLetters: true,
+      }),
     };
 
     const docRef = doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2');
