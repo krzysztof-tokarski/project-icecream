@@ -12,6 +12,12 @@
   text-align: center;
   gap: 20px;
   width: 400px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 mat-list {

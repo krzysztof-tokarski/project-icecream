@@ -1,5 +1,20 @@
 <mat-card class="card">
   <mat-card-title>SET GLOBAL UNITS</mat-card-title>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Name</mat-label>
+      <input formControlName="name" matInput />
+      <mat-hint align="start">This will be used to reference the new unit.</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Value</mat-label>
+      <input pattern="\d*" formControlName="value" matInput />
+      <mat-hint align="start"
+        >This is the value associated with the new unit. The value should be indicated in grams.
+      </mat-hint>
+    </mat-form-field>
+    <button [disabled]="form.invalid" mat-raised-button color="primary">ADD UNIT</button>
+  </form>
 </mat-card>
 
 <ng-template #loading>
