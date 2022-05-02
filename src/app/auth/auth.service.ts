@@ -49,10 +49,13 @@ export class AuthService {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    if (user.role !== Role.Client) {
-      this.router.navigateByUrl('app/management-panel');
-    } else {
-      this.router.navigateByUrl('app/ordering-panel');
+    if (this.router.url == '/auth') {
+      if (user.role !== Role.Client) {
+        this.router.navigateByUrl('app/management-panel');
+      } else {
+        this.router.navigateByUrl('app/ordering-panel');
+      }
+      // to do
     }
   }
 
