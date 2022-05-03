@@ -5,11 +5,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManagementPanelComponent } from './management-panel/management-panel.component';
 import { RouterModule } from '@angular/router';
-import { AddClientFormComponent } from './management-panel/add-client-form/add-client-form.component';
+import { AddClientFormComponent } from './management-panel/client-manager/add-client-form/add-client-form.component';
 import { DeleteIcecreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/delete-ice-cream-form/delete-ice-cream-form.component';
-import { SetGlobalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/set-global-units/set-global-units.component';
-import { AssignLocalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/assign-local-units/assign-local-units.component';
+import { AddGlobalUnitsFormComponent } from './management-panel/ice-cream-manager/manage-units/add-global-units-form/add-global-units-form.component';
+// import { AssignLocalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/assign-local-units/assign-local-units.component';
 import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/add-ice-cream-form/add-ice-cream-form.component';
+import { DeleteGlobalUnitsFormComponent } from './management-panel/ice-cream-manager/manage-units/delete-global-units-form/delete-global-units-form.component';
+import { UnitListComponent } from './management-panel/ice-cream-manager/unit-list/unit-list.component';
+import { ClientListComponent } from './management-panel/client-manager/client-list/client-list.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,11 @@ import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/m
     AddClientFormComponent,
     IceCreamListComponent,
     IceCreamManagerComponent,
-    SetGlobalUnitsComponent,
-    AssignLocalUnitsComponent,
+    AddGlobalUnitsFormComponent,
+    DeleteGlobalUnitsFormComponent,
+    UnitListComponent,
+    ClientListComponent,
+    // AssignLocalUnitsComponent,
   ],
   imports: [
     CommonModule,
@@ -31,8 +37,12 @@ import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/m
         component: ManagementPanelComponent,
         children: [
           {
-            path: 'add-client',
+            path: 'client-manager/add-client',
             component: AddClientFormComponent,
+          },
+          {
+            path: 'client-manager/client-list',
+            component: ClientListComponent,
           },
           {
             path: 'icecream-manager',
@@ -51,12 +61,20 @@ import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/m
                 component: IceCreamListComponent,
               },
               {
-                path: 'global-units',
-                component: SetGlobalUnitsComponent,
+                path: 'add-global-units',
+                component: AddGlobalUnitsFormComponent,
               },
               {
-                path: 'local-units',
-                component: AssignLocalUnitsComponent,
+                path: 'delete-global-units',
+                component: DeleteGlobalUnitsFormComponent,
+              },
+              {
+                path: 'unit-list',
+                component: UnitListComponent,
+              },
+              {
+                // path: 'local-units',
+                // component: AssignLocalUnitsComponent,
               },
             ],
           },

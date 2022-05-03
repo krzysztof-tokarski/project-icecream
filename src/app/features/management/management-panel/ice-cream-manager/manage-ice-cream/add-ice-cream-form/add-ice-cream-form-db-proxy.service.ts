@@ -46,7 +46,7 @@ export class AddIcecreamFormDbProxyService {
         }).catch(error => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.error('Error adding new user to the database', errorCode, errorMessage);
+          console.error('Error adding new icecream to the database', errorCode, errorMessage);
         });
       });
   }

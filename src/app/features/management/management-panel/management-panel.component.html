@@ -6,20 +6,26 @@
       </button>
       <span>MANAGEMENT PANEL</span>
     </mat-toolbar>
-
     <mat-menu #menu="matMenu">
-      <button routerLink="add-client" mat-menu-item>ADD NEW CLIENT</button>
+      <button mat-menu-item [matMenuTriggerFor]="clientmanager">CLIENT MANAGER</button>
       <mat-divider></mat-divider>
       <button mat-menu-item [matMenuTriggerFor]="icecreammananger">ICECREAM MANAGER</button>
       <mat-divider></mat-divider>
       <button mat-menu-item [matMenuTriggerFor]="ordermanager">ORDER MANAGER</button>
     </mat-menu>
+    <mat-menu #clientmanager="matMenu">
+      <button routerLink="client-manager/add-client" mat-menu-item>ADD NEW CLIENT</button>
+      <mat-divider></mat-divider>
+      <button routerLink="client-manager/client-list" mat-menu-item>CLIENT LIST</button>
+    </mat-menu>
     <mat-menu #icecreammananger="matMenu">
       <button mat-menu-item routerLink="icecream-manager/icecream-list">ICE CREAM LIST</button>
       <mat-divider></mat-divider>
-      <button mat-menu-item [matMenuTriggerFor]="unitmenu">MANAGE ICE CREAM UNITS</button>
+      <button mat-menu-item routerLink="icecream-manager/unit-list">GLOBAL UNITS LIST</button>
       <mat-divider></mat-divider>
       <button mat-menu-item [matMenuTriggerFor]="adddelmenu">MANAGE ICE CREAM</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="unitmenu">MANAGE ICE CREAM UNITS</button>
     </mat-menu>
     <mat-menu #ordermanager="matMenu">
       <button mat-menu-item>SIMPLE ORDERS LIST</button>
@@ -32,9 +38,10 @@
       <button routerLink="icecream-manager/delete-icecream" mat-menu-item>DELETE ICE CREAM</button>
     </mat-menu>
     <mat-menu #unitmenu="matMenu">
-      <button routerLink="icecream-manager/global-units" mat-menu-item>SET GLOBAL UNITS</button>
+      <button routerLink="icecream-manager/add-global-units" mat-menu-item>ADD GLOBAL UNITS</button>
       <mat-divider></mat-divider>
-      <button routerLink="icecream-manager/local-units" mat-menu-item>ASSIGN UNITS TO ICE CREAM</button>
+      <button routerLink="icecream-manager/delete-global-units" mat-menu-item>DELETE GLOBAL UNITS</button>
+      <!-- <button routerLink="icecream-manager/local-units" mat-menu-item>ASSIGN UNITS TO ICE CREAM</button> -->
     </mat-menu>
   </div>
   <router-outlet></router-outlet>

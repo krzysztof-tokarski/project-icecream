@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 // export function numbersOnlyValidator(control: FormControl) {
 //   // eslint-disable-next-line no-useless-escape
 //   const regex = new RegExp('d*');
 //   const check = regex.test(control.value);
 //   if (check) {
-//     return true;
+//     return true;s
 //   } else {
 //     return null;
 //   }
@@ -15,7 +15,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
-export class UnitFormGeneratorService {
+export class AddGlobalsUnitFormGeneratorService {
   constructor(private formBuilder: FormBuilder) {}
 
   public createForm() {

@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <mat-card-title>SET GLOBAL UNITS</mat-card-title>
+  <mat-card-title>ADD GLOBAL UNITS</mat-card-title>
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
     <mat-form-field appearance="fill">
       <mat-label>Unit Name</mat-label>
@@ -16,7 +16,3 @@
     <button [disabled]="form.invalid" mat-raised-button color="primary">ADD UNIT</button>
   </form>
 </mat-card>
-
-<ng-template #loading>
-  <mat-spinner></mat-spinner>
-</ng-template>

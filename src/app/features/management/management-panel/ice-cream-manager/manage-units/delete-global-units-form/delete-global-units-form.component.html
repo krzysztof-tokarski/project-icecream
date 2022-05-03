@@ -1,0 +1,13 @@
+<mat-card class="card">
+  <mat-card-title>DELETE GLOBAL UNITS</mat-card-title>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Name</mat-label>
+      <input formControlName="name" matInput />
+      <mat-hint align="start"
+        >Enter the name of the Unit that you want deleted (this input is case sensitive)
+      </mat-hint>
+    </mat-form-field>
+    <button [disabled]="form.invalid" mat-raised-button color="primary">DELETE UNIT</button>
+  </form>
+</mat-card>
