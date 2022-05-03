@@ -22,7 +22,6 @@ export class RoleGuard implements CanActivate {
     return this.store.select(selectRole).pipe(
       map(role => canActivateRoles.includes(role)),
       tap(canActivate => {
-        console.log(canActivate);
         if (canActivate) {
           return;
         }

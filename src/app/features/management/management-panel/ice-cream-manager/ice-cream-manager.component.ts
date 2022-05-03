@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'icy-ice-cream-manager',
   templateUrl: './ice-cream-manager.component.html',
   styleUrls: ['./ice-cream-manager.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IceCreamManagerComponent implements OnInit {
+export class IceCreamManagerComponent {
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public changeOfRoutes() {
+    localStorage.setItem('url', this.router.url);
   }
-
 }

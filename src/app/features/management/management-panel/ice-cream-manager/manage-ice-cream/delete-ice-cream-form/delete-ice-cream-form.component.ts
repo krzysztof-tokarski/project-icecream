@@ -20,19 +20,16 @@ export class DeleteIceCreamFormComponent {
   }
 
   public async onSubmit() {
-    const deletedIcecream: Icecream = {
-      name: this.form.controls['name'].value,
-      units: [],
-      sellerUid: '',
-      id: '',
-    };
-
-    const docRef = doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2');
-
-    await updateDoc(docRef, {
-      icecreamList: arrayRemove(deletedIcecream),
-    });
-
-    this.formGroupDirective.resetForm();
+    // const deletedIcecream: Icecream = {
+    //   // name: this.form.controls['name'].value,
+    //   // units: [],
+    //   // sellerUid: '',
+    //   // id: '',
+    // };
+    // const docRef = doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2');
+    // await updateDoc(docRef, {
+    //   icecreamList: arrayRemove(deletedIcecream),
+    // });
+    // this.formGroupDirective.resetForm();
   }
 }
