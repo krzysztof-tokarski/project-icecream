@@ -14,7 +14,6 @@ export class AddIcecreamFormDbProxyService {
   constructor(private store: Store<AppState>) {}
 
   public async addIcecream(form: AddIcecreamFormInterface) {
-    let sellerUid: string;
     const selectUid: any = (state: AppState) => state.user.currentUser?.uid;
     // to do
 
