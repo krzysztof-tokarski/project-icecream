@@ -23,6 +23,7 @@ export class AuthService {
       this.signOut();
       return;
     }
+
     this.setStateAfterAuth(userFromStorage);
   }
 
@@ -47,16 +48,21 @@ export class AuthService {
   }
 
   private setStateAfterAuth(user: UserType) {
+    this.router.navigateByUrl(this.router.url);
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    if (this.router.url == '/auth') {
+    const url = localStorage.getItem('url');
+    if (url == '/auth') {
       if (user.role !== Role.Client) {
         this.router.navigateByUrl('app/management-panel');
+        // this.router.navigateByUrl(this.router.url);
       } else {
         this.router.navigateByUrl('app/ordering-panel');
+        // this.router.navigateByUrl(this.router.url);
       }
-      // to do
+    } else {
+      this.router.navigateByUrl(url!);
     }
   }
 

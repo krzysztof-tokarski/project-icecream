@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Client } from '@shared/models/user/client.interface';
 import { AddClientFormValue } from './add-client-form.interface';
 import { Injectable } from '@angular/core';
@@ -7,6 +6,7 @@ import { arrayUnion, doc, getFirestore, setDoc, updateDoc } from 'firebase/fires
 import { Role } from '@shared/models/user/role.enum';
 import { AppState } from '@state/app.state';
 import { Store } from '@ngrx/store';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,12 @@ export class AddClientFirebaseProxyService {
     let sellerUid: string;
     const selectUid: any = (state: AppState) => state.user.currentUser?.uid;
     // to do
-
-    this.store.select(selectUid).subscribe(uid => (sellerUid = uid));
+    this.store
+      .select(selectUid)
+      .pipe(take(1))
+      .subscribe(value => {
+        sellerUid = value;
+      });
 
     // create user for firebase auth
     createUserWithEmailAndPassword(getAuth(), form.email, form.password)

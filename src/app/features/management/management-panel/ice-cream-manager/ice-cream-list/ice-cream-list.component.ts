@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { AppState } from '@state/app.state';
 
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Component({
@@ -19,10 +19,12 @@ export class IceCreamListComponent {
   constructor(private store: Store<AppState>, private firestore: Firestore) {
     const selectUid = (state: AppState) => state.user.currentUser?.uid;
     // to do
-    this.store.select(selectUid).subscribe(uid => {
-      const collectionRef = collection(this.firestore, `users/${uid}/icecreamList`);
-
-      this.icecreamList$ = collectionData(collectionRef) as Observable<Icecream[]>;
-    });
+    this.store
+      .select(selectUid)
+      .pipe(take(1))
+      .subscribe(uid => {
+        const collectionRef = collection(this.firestore, `users/${uid}/icecreamList`);
+        this.icecreamList$ = collectionData(collectionRef) as Observable<Icecream[]>;
+      });
   }
 }
