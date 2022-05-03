@@ -1,11 +1,17 @@
-<mat-card *ngIf="icecreamList; else loading" class="card">
+<mat-card *ngIf="icecreamList$ | async; else loading" class="card">
   <mat-list>
     <mat-card-title>ICE CREAM LIST</mat-card-title>
-    <mat-list-item *ngFor="let icecream of icecreamList; let index = index">
+    <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
       <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
     >
   </mat-list>
 </mat-card>
+
+<!-- <mat-card *ngIf="item$ | async">
+  <mat-list-item *ngFor="let item of item$ | async; let index = index">
+    <p>{{ index + 1 }}. {{ item.name }}</p></mat-list-item
+  >
+</mat-card> -->
 
 <ng-template #loading>
   <mat-spinner></mat-spinner>

@@ -9,48 +9,19 @@ import firebase from 'firebase/compat/app';
 import { child, get, getDatabase, onValue, ref, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import { user } from '@angular/fire/auth';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+
 @Component({
   selector: 'icy-ice-cream-list',
   templateUrl: './ice-cream-list.component.html',
   styleUrls: ['./ice-cream-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IceCreamListComponent implements OnInit {
-  public icecreamList!: Icecream[];
+export class IceCreamListComponent {
+  public collection = collection(this.firestore, 'users/8JQOCItqF7fwWLVG9HAU3BvGKmt2/icecreamList');
+  public icecreamList$: Observable<Icecream[]> = collectionData(this.collection) as Observable<Icecream[]>;
 
-  constructor(private store: Store<AppState>) {
-    async function getDB() {
-      const userId = '8JQOCItqF7fwWLVG9HAU3BvGKmt2';
-
-      const insert = 'icecream/' + userId;
-      const dbRef = ref(getDatabase());
-
-      await get(child(dbRef, insert)).then(snapshot => {
-        const data = snapshot.val();
-        const values = Object.keys(data).map(function (key) {
-          return data[key];
-        });
-        return localStorage.setItem('icecream', JSON.stringify(values));
-      });
-    }
-
-    getDB().then((this.icecreamList = JSON.parse(localStorage.getItem('icecream')!)));
-  }
-
-  // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-  ngOnInit(): void {
-    // async function getDB() {
-    //   const userId = '8JQOCItqF7fwWLVG9HAU3BvGKmt2';
-    //   const insert = 'icecream/' + userId;
-    //   const dbRef = ref(getDatabase());
-    //   await get(child(dbRef, insert)).then(snapshot => {
-    //     const data = snapshot.val();
-    //     const values = Object.keys(data).map(function (key) {
-    //       return data[key];
-    //     });
-    //     return localStorage.setItem('icecream', JSON.stringify(values));
-    //   });
-    // }
-    // getDB().then((this.icecreamList = JSON.parse(localStorage.getItem('icecream')!)));
+  constructor(private store: Store<AppState>, private firestore: Firestore) {
+    // this.icecreamList$ = collectionData(this.collection) as Observable<Icecream[]>;
   }
 }

@@ -1,3 +1,4 @@
+import { Client } from '@shared/models/user/client.interface';
 import { UserService } from './../../../../auth/user.service';
 import { AddClientFormValue } from './add-client-form.interface';
 import { Injectable } from '@angular/core';
@@ -22,32 +23,31 @@ export class AddClientFirebaseProxyService {
     // });
 
     const selectUid: any = (state: AppState) => state.user.currentUser?.uid;
+    // to do
 
     this.store.select(selectUid).subscribe(uid => (sellerUid = uid));
 
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, form.email, form.password)
+    // create user for firebase auth
+    createUserWithEmailAndPassword(getAuth(), form.email, form.password)
       .then(async userCredential => {
-        setDoc(doc(getFirestore(), 'users', userCredential.user.uid), {
+        const newClient: Client = {
+          uid: userCredential.user.uid,
           sellerUid: sellerUid,
           role: Role.Client,
           displayName: form.displayName,
-        });
+        };
 
-        updateDoc(doc(getFirestore(), 'users', sellerUid), {
-          clientsList: arrayUnion(userCredential.user.uid),
-        });
+        // create new entry in the users collection
+        setDoc(doc(getFirestore(), 'users', userCredential.user.uid), newClient);
 
-        setDoc(doc(getFirestore(), 'users', sellerUid, 'clientList', userCredential.user.uid), {
-          displayName: form.displayName,
-          clientUid: userCredential.user.uid,
-        });
+        // create new entry in the seller's clientlist subcollection
+        setDoc(doc(getFirestore(), 'users', sellerUid, 'clientList', userCredential.user.uid), newClient);
 
-        const db = getDatabase();
-        set(ref(db, 'users/' + userCredential.user.uid), {
-          sellerUid: sellerUid,
-          role: Role.Client,
-          displayName: form.displayName,
+        const docRef = doc(getFirestore(), 'users', sellerUid);
+
+        // update property of the seller
+        await updateDoc(docRef, {
+          clientList: arrayUnion(newClient),
         });
       })
       .catch(error => {
