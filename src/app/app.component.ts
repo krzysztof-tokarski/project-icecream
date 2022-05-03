@@ -10,8 +10,8 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
-        localStorage.setItem('url', this.router.url);
-        // console.log(localStorage.getItem('url'));
+        sessionStorage.setItem('url', this.router.url);
+        // console.log(sessionStorage.getItem('url'));
       }
     });
   }

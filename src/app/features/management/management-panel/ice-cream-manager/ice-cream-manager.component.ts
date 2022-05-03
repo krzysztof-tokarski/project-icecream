@@ -11,6 +11,6 @@ export class IceCreamManagerComponent {
   constructor(private router: Router) {}
 
   public changeOfRoutes() {
-    localStorage.setItem('url', this.router.url);
+    sessionStorage.setItem('url', this.router.url);
   }
 }

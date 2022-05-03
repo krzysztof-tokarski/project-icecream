@@ -44,8 +44,8 @@ export class SetGlobalUnitsComponent implements OnInit {
   // public units!: Unit[];
 
   public ngOnInit() {
-    // const userFromLocalStorage = JSON.parse(localStorage.getItem('user')!) as Seller;
-    // console.log(userFromLocalStorage);
-    // this.units = userFromLocalStorage.unitList;
+    // const userFromsessionStorage = JSON.parse(sessionStorage.getItem('user')!) as Seller;
+    // console.log(userFromsessionStorage);
+    // this.units = userFromsessionStorage.unitList;
   }
 }

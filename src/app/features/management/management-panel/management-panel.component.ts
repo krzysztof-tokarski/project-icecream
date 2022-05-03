@@ -14,9 +14,9 @@ export class ManagementPanelComponent implements OnInit {
 
     if (docSnap.exists()) {
       console.log('Document data:', docSnap.data());
-      // const userFromStorage = localStorage.getItem('user');
+      // const userFromStorage = sessionStorage.getItem('user');
       // const userWithDb = { user: userFromStorage, data: docSnap.data() };
-      localStorage.setItem('user', JSON.stringify(docSnap.data()));
+      sessionStorage.setItem('user', JSON.stringify(docSnap.data()));
     } else {
       // doc.data() will be undefined in this case
       // console.log('No such document!');

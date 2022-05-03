@@ -18,7 +18,7 @@ import { UserType } from '@shared/models/user/user.type';
 export class AuthService {
   constructor(private router: Router, private store: Store<AppState>, private userService: UserService) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const userFromStorage: UserType = JSON.parse(localStorage.getItem('user')!);
+    const userFromStorage: UserType = JSON.parse(sessionStorage.getItem('user')!);
     if (!userFromStorage) {
       this.signOut();
       return;
@@ -43,7 +43,7 @@ export class AuthService {
     signOut(getAuth());
     this.store.dispatch(AuthActions.setUnAuth());
     this.store.dispatch(UserActions.signOutCurrentUser());
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     this.router.navigate(['auth']);
   }
 
@@ -52,7 +52,7 @@ export class AuthService {
     this.userService.setUser(user);
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    const url = localStorage.getItem('url');
+    const url = sessionStorage.getItem('url');
     if (url == '/auth') {
       if (user.role !== Role.Client) {
         this.router.navigateByUrl('app/management-panel');
@@ -69,7 +69,7 @@ export class AuthService {
   private async getUserFromDB(uid: string) {
     const docSnap = await getDoc(doc(getFirestore(), 'users', uid));
     const user = docSnap.data() as UserType;
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
     this.setStateAfterAuth(user);
   }
 }
