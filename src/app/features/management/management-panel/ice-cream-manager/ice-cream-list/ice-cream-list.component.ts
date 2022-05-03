@@ -1,14 +1,10 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Store } from '@ngrx/store';
-import { Component, ChangeDetectionStrategy, OnInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { AppState } from '@state/app.state';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { map, Observable } from 'rxjs';
-import firebase from 'firebase/compat/app';
-import { child, get, getDatabase, onValue, ref, set } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
-import { user } from '@angular/fire/auth';
+
+import { Observable } from 'rxjs';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Component({
@@ -18,10 +14,15 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IceCreamListComponent {
-  public collection = collection(this.firestore, 'users/8JQOCItqF7fwWLVG9HAU3BvGKmt2/icecreamList');
-  public icecreamList$: Observable<Icecream[]> = collectionData(this.collection) as Observable<Icecream[]>;
+  public icecreamList$!: Observable<Icecream[]>;
 
   constructor(private store: Store<AppState>, private firestore: Firestore) {
-    // this.icecreamList$ = collectionData(this.collection) as Observable<Icecream[]>;
+    const selectUid = (state: AppState) => state.user.currentUser?.uid;
+    // to do
+    this.store.select(selectUid).subscribe(uid => {
+      const collectionRef = collection(this.firestore, `users/${uid}/icecreamList`);
+
+      this.icecreamList$ = collectionData(collectionRef) as Observable<Icecream[]>;
+    });
   }
 }

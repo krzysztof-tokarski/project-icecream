@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { arrayRemove, arrayUnion, doc, getFirestore, updateDoc } from 'firebase/firestore';
-import { IceCreamFormGeneratorService } from '../ice-cream-form-generator.service';
+import { IcecreamFormGeneratorService } from '../ice-cream-form-generator.service';
 
 @Component({
   selector: 'icy-delete-ice-cream-form',
@@ -10,13 +10,13 @@ import { IceCreamFormGeneratorService } from '../ice-cream-form-generator.servic
   styleUrls: ['./delete-ice-cream-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeleteIceCreamFormComponent {
+export class DeleteIcecreamFormComponent {
   @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
 
   public form!: FormGroup;
 
-  constructor(private iceCreamFormGeneratorService: IceCreamFormGeneratorService) {
-    this.form = this.iceCreamFormGeneratorService.createForm();
+  constructor(private icecreamFormGeneratorService: IcecreamFormGeneratorService) {
+    this.form = this.icecreamFormGeneratorService.createForm();
   }
 
   public async onSubmit() {

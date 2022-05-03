@@ -1,24 +1,24 @@
 import { IceCreamListComponent } from './management-panel/ice-cream-manager/ice-cream-list/ice-cream-list.component';
 import { IceCreamManagerComponent } from './management-panel/ice-cream-manager/ice-cream-manager.component';
-import { AddIceCreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/add-ice-cream-form/add-ice-cream-form.component';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManagementPanelComponent } from './management-panel/management-panel.component';
 import { RouterModule } from '@angular/router';
 import { AddClientFormComponent } from './management-panel/add-client-form/add-client-form.component';
-import { DeleteIceCreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/delete-ice-cream-form/delete-ice-cream-form.component';
+import { DeleteIcecreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/delete-ice-cream-form/delete-ice-cream-form.component';
 import { SetGlobalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/set-global-units/set-global-units.component';
 import { AssignLocalUnitsComponent } from './management-panel/ice-cream-manager/manage-units/assign-local-units/assign-local-units.component';
+import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/manage-ice-cream/add-ice-cream-form/add-ice-cream-form.component';
 
 @NgModule({
   declarations: [
+    AddIcecreamFormComponent,
+    DeleteIcecreamFormComponent,
     ManagementPanelComponent,
     AddClientFormComponent,
     IceCreamListComponent,
-    AddIceCreamFormComponent,
     IceCreamManagerComponent,
-    DeleteIceCreamFormComponent,
     SetGlobalUnitsComponent,
     AssignLocalUnitsComponent,
   ],
@@ -40,11 +40,11 @@ import { AssignLocalUnitsComponent } from './management-panel/ice-cream-manager/
             children: [
               {
                 path: 'add-icecream',
-                component: AddIceCreamFormComponent,
+                component: AddIcecreamFormComponent,
               },
               {
                 path: 'delete-icecream',
-                component: DeleteIceCreamFormComponent,
+                component: DeleteIcecreamFormComponent,
               },
               {
                 path: 'icecream-list',
