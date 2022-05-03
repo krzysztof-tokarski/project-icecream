@@ -16,6 +16,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { AppState } from './state/app.state';
+import { HttpClientModule } from '@angular/common/http';
 
 import { authReducer } from '@state/auth/auth.reducer';
 import { userReducer } from '@state/user/user.reducer';
@@ -24,6 +25,7 @@ const firebaseConfig = {
   apiKey: 'AIzaSyDmknldActfY9SI1FbFKE2thRSR0urvbyo',
   authDomain: 'project-icecream-9c598.firebaseapp.com',
   projectId: 'project-icecream-9c598',
+  databaseURL: 'https://project-icecream-9c598-default-rtdb.europe-west1.firebasedatabase.app/',
   storageBucket: 'project-icecream-9c598.appspot.com',
   messagingSenderId: '891793697399',
   appId: '1:891793697399:web:4f401ba5da5410799cb472',
@@ -33,6 +35,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,

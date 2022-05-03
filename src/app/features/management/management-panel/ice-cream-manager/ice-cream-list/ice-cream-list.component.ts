@@ -1,10 +1,14 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Store } from '@ngrx/store';
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { AppState } from '@state/app.state';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import firebase from 'firebase/compat/app';
+import { child, get, getDatabase, onValue, ref, set } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
+import { user } from '@angular/fire/auth';
 @Component({
   selector: 'icy-ice-cream-list',
   templateUrl: './ice-cream-list.component.html',
@@ -14,38 +18,39 @@ import firebase from 'firebase/compat/app';
 export class IceCreamListComponent implements OnInit {
   public icecreamList!: Icecream[];
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {
+    async function getDB() {
+      const userId = '8JQOCItqF7fwWLVG9HAU3BvGKmt2';
 
-  public ngOnInit() {
-    const collectionRef = firebase.firestore().collection('users/8JQOCItqF7fwWLVG9HAU3BvGKmt2/icecreamList');
+      const insert = 'icecream/' + userId;
+      const dbRef = ref(getDatabase());
 
-    collectionRef.get().then(snapshot => {
-      const data = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      console.log("All data in 'books' collection", data);
-      // [ { id: 'glMeZvPpTN1Ah31sKcnj', title: 'The Great Gatsby' } ]
-    });
+      await get(child(dbRef, insert)).then(snapshot => {
+        const data = snapshot.val();
+        const values = Object.keys(data).map(function (key) {
+          return data[key];
+        });
+        return localStorage.setItem('icecream', JSON.stringify(values));
+      });
+    }
 
-    // console.log(x);
+    getDB().then((this.icecreamList = JSON.parse(localStorage.getItem('icecream')!)));
+  }
 
-    console.log('xd');
-    // const selectUid: any = (state: AppState) => state.user.currentUser?.uid;
-    // console.log(selectUid);
-    // this.store.select(selectUid).pipe(
-    //   map(selectUid => {
-    //     const x = getDoc(doc(getFirestore(), 'users', selectUid, 'icecreamList'));
-    //     console.log(x);
-    //   })
-    // );
+  // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
+  ngOnInit(): void {
+    // async function getDB() {
+    //   const userId = '8JQOCItqF7fwWLVG9HAU3BvGKmt2';
+    //   const insert = 'icecream/' + userId;
+    //   const dbRef = ref(getDatabase());
+    //   await get(child(dbRef, insert)).then(snapshot => {
+    //     const data = snapshot.val();
+    //     const values = Object.keys(data).map(function (key) {
+    //       return data[key];
+    //     });
+    //     return localStorage.setItem('icecream', JSON.stringify(values));
+    //   });
+    // }
+    // getDB().then((this.icecreamList = JSON.parse(localStorage.getItem('icecream')!)));
   }
 }
-
-// map(role => canActivateRoles.includes(role)),
-// tap(canActivate => {
-//   if (canActivate) {
-//     return;
-//   }
-// })
-// );

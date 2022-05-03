@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
+import { getDatabase, ref, set } from 'firebase/database';
 import { arrayUnion, doc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 import { IceCreamFormGeneratorService } from '../ice-cream-form-generator.service';
 
@@ -35,6 +36,12 @@ export class AddIceCreamFormComponent {
 
     setDoc(doc(getFirestore(), 'sellers', '8JQOCItqF7fwWLVG9HAU3BvGKmt2', 'icecreamList', id), {
       uid: id,
+    });
+
+    const db = getDatabase();
+    set(ref(db, 'icecream/' + '8JQOCItqF7fwWLVG9HAU3BvGKmt2/' + id), {
+      units: [],
+      name: this.form.controls['name'].value,
     });
 
     this.formGroupDirective.resetForm();

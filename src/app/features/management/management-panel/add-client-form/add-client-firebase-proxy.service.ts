@@ -6,12 +6,14 @@ import { arrayUnion, doc, getFirestore, setDoc, updateDoc } from 'firebase/fires
 import { Role } from '@shared/models/user/role.enum';
 import { AppState } from '@state/app.state';
 import { State, Store } from '@ngrx/store';
+import { HttpClient } from '@angular/common/http';
+import { getDatabase, ref, set } from 'firebase/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddClientFirebaseProxyService {
-  constructor(private userService: UserService, private store: Store<AppState>) {}
+  constructor(private userService: UserService, private store: Store<AppState>, private httpClient: HttpClient) {}
 
   public async addClient(form: AddClientFormValue) {
     let sellerUid: string;
@@ -39,6 +41,13 @@ export class AddClientFirebaseProxyService {
         setDoc(doc(getFirestore(), 'users', sellerUid, 'clientList', userCredential.user.uid), {
           displayName: form.displayName,
           clientUid: userCredential.user.uid,
+        });
+
+        const db = getDatabase();
+        set(ref(db, 'users/' + userCredential.user.uid), {
+          sellerUid: sellerUid,
+          role: Role.Client,
+          displayName: form.displayName,
         });
       })
       .catch(error => {
