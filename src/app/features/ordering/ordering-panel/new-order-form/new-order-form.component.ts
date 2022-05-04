@@ -1,16 +1,27 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { NewOrderFormValue } from './new-order-form.interface';
+import { NewOrderFormGeneratorService } from './new-order-form-generator.service';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { NewOrderProcessorService } from './new-order-processor.service';
 
 @Component({
   selector: 'icy-new-order-form',
   templateUrl: './new-order-form.component.html',
   styleUrls: ['./new-order-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewOrderFormComponent implements OnInit {
+export class NewOrderFormComponent {
+  @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
 
-  constructor() { }
+  public form: FormGroup = this.newOrderFormGeneratorService.createForm();
 
-  ngOnInit(): void {
+  constructor(
+    private newOrderFormGeneratorService: NewOrderFormGeneratorService,
+    private newOrderProcessorService: NewOrderProcessorService
+  ) {}
+
+  public onSubmit() {
+    this.newOrderProcessorService.processOrder(this.form.value);
+    this.formGroupDirective.resetForm();
   }
-
 }
