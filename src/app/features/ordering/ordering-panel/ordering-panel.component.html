@@ -7,13 +7,13 @@
       <span>ORDERING PANEL</span>
     </mat-toolbar>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>FAVOURITE ICECREAM LIST</button>
+      <button routerLink="favourite-icecream" mat-menu-item>FAVOURITE ICECREAM LIST</button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>BROWSE ICE CREAM</button>
+      <button routerLink="browse-icecream" mat-menu-item>BROWSE ICE CREAM</button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>MAKE NEW ORDER</button>
+      <button routerLink="new-order" mat-menu-item>MAKE NEW ORDER</button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>COPY LAST ORDER</button>
+      <button routerLink="last-order" mat-menu-item>COPY LAST ORDER</button>
     </mat-menu>
   </div>
   <router-outlet></router-outlet>
