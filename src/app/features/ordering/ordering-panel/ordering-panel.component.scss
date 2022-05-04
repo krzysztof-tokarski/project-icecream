@@ -29,13 +29,16 @@ h2 {
 }
 
 mat-toolbar{
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15px;
   padding: 0;
   max-height: 56px;
 }
 
+
 mat-divider {
   width: 100%;
 }
+
+

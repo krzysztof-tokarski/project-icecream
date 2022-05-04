@@ -1,14 +1,20 @@
 <div class="wrapper">
   <div class="wrapper__header">
-    <h2>
-      ORDERING <br />
-      PANEL
-    </h2>
-    <mat-toolbar>
-      <a routerLink="new-order"><button mat-raised-button color="primary">NEW ORDER</button></a>
+    <mat-toolbar color="accent">
+      <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>ORDERING PANEL</span>
     </mat-toolbar>
-
-    <mat-divider></mat-divider>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>FAVOURITE ICECREAM LIST</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>BROWSE ICE CREAM</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>MAKE NEW ORDER</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>COPY LAST ORDER</button>
+    </mat-menu>
   </div>
   <router-outlet></router-outlet>
 </div>
