@@ -1,8 +1,11 @@
 <mat-card *ngIf="icecreamList$ | async; else loading" class="card">
+  <mat-card-title>ICE CREAM OFFERED BY </mat-card-title>
+  <mat-card-subtitle
+    ><p>{{ seller.displayName | uppercase }}</p></mat-card-subtitle
+  >
   <mat-list>
-    <mat-card-title>ICE CREAM LIST</mat-card-title>
     <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
-      <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
+      <p>{{ icecream.name | uppercase }}</p></mat-list-item
     >
   </mat-list>
 </mat-card>
