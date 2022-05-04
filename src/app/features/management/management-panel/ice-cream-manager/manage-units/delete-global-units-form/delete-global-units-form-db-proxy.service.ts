@@ -7,5 +7,7 @@ import { Injectable } from '@angular/core';
 export class DeleteGlobalUnitsFormDbProxyService {
   constructor() {}
 
-  public onSubmit(form: DeleteGlobalUnitsFormInterface) {}
+  public onSubmit(form: DeleteGlobalUnitsFormInterface) {
+    // to do
+  }
 }

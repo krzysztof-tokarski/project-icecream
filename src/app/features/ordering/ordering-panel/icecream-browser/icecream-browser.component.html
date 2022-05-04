@@ -3,13 +3,10 @@
   <mat-card-subtitle
     ><p>{{ seller.displayName | uppercase }}</p></mat-card-subtitle
   >
-  <mat-list>
-    <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
-      <p>{{ icecream.name | uppercase }}</p></mat-list-item
-    >
-  </mat-list>
+  <div class="container">
+    <icy-ice-cream-card *ngFor="let icecream of icecreamList$ | async" [icecream]="icecream"></icy-ice-cream-card>
+  </div>
 </mat-card>
-
 <ng-template #loading>
   <mat-spinner></mat-spinner>
 </ng-template>

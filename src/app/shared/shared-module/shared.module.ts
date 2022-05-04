@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const ANGULAR_MODULES = [FormsModule, ReactiveFormsModule];
 
@@ -34,6 +35,7 @@ const MATERIAL_MODULES = [
   MatDividerModule,
   MatProgressSpinnerModule,
   MatListModule,
+  MatGridListModule,
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ import { OrderingPanelComponent } from './ordering-panel/ordering-panel.componen
 import { NewOrderFormComponent } from './ordering-panel/new-order-form/new-order-form.component';
 import { FavouriteIceCreamListComponent } from './ordering-panel/favourite-ice-cream-list/favourite-ice-cream-list.component';
 import { CopyLastOrderComponent } from './ordering-panel/copy-last-order/copy-last-order.component';
+import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cream-card/ice-cream-card.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CopyLastOrderComponent } from './ordering-panel/copy-last-order/copy-la
     NewOrderFormComponent,
     FavouriteIceCreamListComponent,
     CopyLastOrderComponent,
+    IceCreamCardComponent,
   ],
   imports: [
     SharedModule,
