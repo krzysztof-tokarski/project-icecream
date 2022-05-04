@@ -9,7 +9,13 @@ import { FavouriteIceCreamListComponent } from './ordering-panel/favourite-ice-c
 import { CopyLastOrderComponent } from './ordering-panel/copy-last-order/copy-last-order.component';
 
 @NgModule({
-  declarations: [OrderingPanelComponent, NewOrderFormComponent, FavouriteIceCreamListComponent, CopyLastOrderComponent],
+  declarations: [
+    IcecreamBrowserComponent,
+    OrderingPanelComponent,
+    NewOrderFormComponent,
+    FavouriteIceCreamListComponent,
+    CopyLastOrderComponent,
+  ],
   imports: [
     SharedModule,
     CommonModule,

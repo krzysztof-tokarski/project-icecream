@@ -1,1 +1,12 @@
-<p>icecream-browser works!</p>
+<mat-card *ngIf="icecreamList$ | async; else loading" class="card">
+  <mat-list>
+    <mat-card-title>ICE CREAM LIST</mat-card-title>
+    <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
+      <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
+    >
+  </mat-list>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
