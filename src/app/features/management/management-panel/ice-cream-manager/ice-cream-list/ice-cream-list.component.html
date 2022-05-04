@@ -1,6 +1,6 @@
 <mat-card *ngIf="icecreamList$ | async; else loading" class="card">
+  <mat-card-title>ICE CREAM LIST</mat-card-title>
   <mat-list>
-    <mat-card-title>ICE CREAM LIST</mat-card-title>
     <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
       <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
     >

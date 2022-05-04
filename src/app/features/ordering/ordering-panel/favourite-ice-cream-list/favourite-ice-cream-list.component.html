@@ -1,1 +1,12 @@
-<p>favourite-ice-cream-list works!</p>
+<mat-card *ngIf="icecreamList$ | async; else loading" class="card">
+  <mat-card-title>YOUR FAVOURITE ICE CREAM</mat-card-title>
+  <div>
+    <button *ngFor="let icecream of icecreamList$ | async" (click)="onClick(icecream)" mat-raised-button color="accent">
+      {{ icecream.name | uppercase }}
+    </button>
+  </div>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
