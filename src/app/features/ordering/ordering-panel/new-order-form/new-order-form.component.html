@@ -1,23 +1,31 @@
-<!-- <mat-card class="card">
-  <mat-card-title>ADD NEW CLIENT</mat-card-title>
+<mat-card class="card">
+  <mat-card-title>NEW ORDER</mat-card-title>
   <mat-card-content>
     <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
       <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput />
-        <mat-hint align="start">This will serve as client's login when logging in to the app</mat-hint>
+        <mat-label>Icecream</mat-label>
+        <mat-select formControlName="icecream">
+          <mat-option *ngFor="let icecream of (seller$ | async)?.icecreamList" [value]="icecream">
+            {{ icecream.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start">The icecream you would like to order</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input formControlName="password" matInput />
-        <mat-hint align="start">This will serve as client's password when logging in to the app</mat-hint>
+        <mat-label>Unit</mat-label>
+        <mat-select formControlName="unit">
+          <mat-option *ngFor="let unit of (seller$ | async)?.unitList" [value]="unit">
+            {{ unit.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start">The kind of unit you would like to order</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Display name</mat-label>
-        <input formControlName="displayName" matInput />
-        <mat-hint align="start">This will serve as client's display name in the app</mat-hint>
+        <mat-label>Amount</mat-label>
+        <input pattern="\d*" placeholder="Ex: 5" formControlName="amount" matInput />
+        <mat-hint align="start">The amount of units that you would like to order</mat-hint>
       </mat-form-field>
-      <button [disabled]="form.invalid" mat-raised-button color="primary">ADD CLIENT</button>
+      <button [disabled]="form.invalid" mat-raised-button color="primary">CONFIRM ORDER</button>
     </form>
   </mat-card-content>
-</mat-card> -->
+</mat-card>

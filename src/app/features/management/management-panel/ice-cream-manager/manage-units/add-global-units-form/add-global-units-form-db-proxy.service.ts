@@ -24,7 +24,7 @@ export class AddGlobalUnitsFormDbProxyService {
       .select(selectUid)
       .pipe(take(1))
       .subscribe(async sellerUid => {
-        const originalId = generateUniqueId({
+        const originalId: string = generateUniqueId({
           length: 28,
           useLetters: true,
         });

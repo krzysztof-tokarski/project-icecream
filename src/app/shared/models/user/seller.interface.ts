@@ -1,5 +1,6 @@
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { Unit } from '../ice-cream/unit.interface';
+import { Order } from '../order/order.interface';
 import { Client } from './client.interface';
 import { Role } from './role.enum';
 
@@ -9,6 +10,6 @@ export interface Seller {
   uid: string;
   icecreamList?: Icecream[];
   clientList?: Client[];
-  orderList?: any[];
+  orderList?: Order[];
   unitList?: Unit[];
 }
