@@ -1,1 +1,13 @@
-<p>copy-last-order works!</p>
+<mat-card class="card">
+  <mat-card-title>COPY LAST ORDER</mat-card-title>
+  <mat-card-content>
+    <mat-card-subtitle>ICE CREAM YOU ORDERED LAST TIME</mat-card-subtitle>
+    <p>{{ (currentClient$ | async)?.lastOrder?.icecream?.name }}</p>
+
+    <mat-card-subtitle>UNIT YOU ORDERED LAST TIME</mat-card-subtitle>
+    <p>{{ (currentClient$ | async)?.lastOrder?.unit?.name | uppercase }}</p>
+    <mat-card-subtitle>AMOUNT YOU ORDERED LAST TIME</mat-card-subtitle>
+    <p>{{ (currentClient$ | async)?.lastOrder?.amount }}</p>
+    <button mat-raised-button color="accent">CONFIRM ORDER</button>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,23 @@
+.card{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  width: 400px;
+}
+
+p {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+mat-card-subtitle {
+  margin: 0;
+}
+
+mat-card-content {
+  margin: 0;
+}
+
+

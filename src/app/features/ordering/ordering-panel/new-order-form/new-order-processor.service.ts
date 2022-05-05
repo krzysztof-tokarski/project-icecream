@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { take } from 'rxjs';
 import { doc, getFirestore, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
-import { docData } from '@angular/fire/firestore';
 import { Client } from '@shared/models/user/client.interface';
 import moment from 'moment';
 
