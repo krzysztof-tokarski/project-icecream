@@ -8,6 +8,7 @@ import { NewOrderFormComponent } from './ordering-panel/new-order-form/new-order
 import { FavouriteIceCreamListComponent } from './ordering-panel/favourite-ice-cream-list/favourite-ice-cream-list.component';
 import { CopyLastOrderComponent } from './ordering-panel/copy-last-order/copy-last-order.component';
 import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cream-card/ice-cream-card.component';
+// import { CurrentDayGuard } from './day.guard';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cre
           {
             path: 'last-order',
             component: CopyLastOrderComponent,
+            // canActivate: [CurrentDayGuard],
           },
         ],
       },

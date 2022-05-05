@@ -11,6 +11,8 @@ import { UserActions } from '@state/user/user.actions';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { Role } from '@shared/models/user/role.enum';
 import { UserType } from '@shared/models/user/user.type';
+import { docData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

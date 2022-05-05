@@ -23,6 +23,8 @@ export class CopyLastOrderFormProcessorService {
       useLetters: true,
     });
 
+    const currentDate = moment(new Date()).format('YYYY.MM.DD');
+
     const sellerRef = doc(getFirestore(), 'users', lastOrder.seller.uid);
     const clientRef = doc(getFirestore(), 'users', lastOrder.client.uid);
 
@@ -33,18 +35,19 @@ export class CopyLastOrderFormProcessorService {
       icecream: lastOrder.icecream,
       unit: lastOrder.unit,
       amount: lastOrder.amount,
-      date: moment(new Date()).format('YYYY.MM.DD'),
+      date: currentDate,
     };
 
-    setDoc(doc(getFirestore(), 'users', lastOrder.client.uid, 'orderList', originalId), newOrder);
-    setDoc(doc(getFirestore(), 'users', lastOrder.seller.uid, 'orderList', originalId), newOrder);
-    setDoc(doc(getFirestore(), 'orders', lastOrder.seller.uid, lastOrder.client.uid, originalId), newOrder);
+    // setDoc(doc(getFirestore(), 'users', lastOrder.client.uid, 'orderList', originalId), newOrder);
+    // setDoc(doc(getFirestore(), 'users', lastOrder.seller.uid, 'orderList', originalId), newOrder);
+    setDoc(doc(getFirestore(), 'orders', lastOrder.seller.uid, currentDate, originalId), newOrder);
 
-    await updateDoc(sellerRef, {
-      orderList: arrayUnion(newOrder),
-    });
+    // await updateDoc(sellerRef, {
+    //   // orderList: arrayUnion(newOrder),
+    // });
+
     await updateDoc(clientRef, {
-      orderList: arrayUnion(newOrder),
+      // orderList: arrayUnion(newOrder),
       lastOrder: newOrder,
     });
   }

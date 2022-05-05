@@ -13,6 +13,7 @@ import { AddIcecreamFormComponent } from './management-panel/ice-cream-manager/m
 import { DeleteGlobalUnitsFormComponent } from './management-panel/ice-cream-manager/manage-units/delete-global-units-form/delete-global-units-form.component';
 import { UnitListComponent } from './management-panel/ice-cream-manager/unit-list/unit-list.component';
 import { ClientListComponent } from './management-panel/client-manager/client-list/client-list.component';
+import { OrderListComponent } from './management-panel/order-manager/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ClientListComponent } from './management-panel/client-manager/client-li
     DeleteGlobalUnitsFormComponent,
     UnitListComponent,
     ClientListComponent,
+    OrderListComponent,
     // AssignLocalUnitsComponent,
   ],
   imports: [
@@ -43,6 +45,10 @@ import { ClientListComponent } from './management-panel/client-manager/client-li
           {
             path: 'client-manager/client-list',
             component: ClientListComponent,
+          },
+          {
+            path: 'client-manager/order-list',
+            component: OrderListComponent,
           },
           {
             path: 'icecream-manager',
@@ -72,6 +78,7 @@ import { ClientListComponent } from './management-panel/client-manager/client-li
                 path: 'unit-list',
                 component: UnitListComponent,
               },
+
               {
                 // path: 'local-units',
                 // component: AssignLocalUnitsComponent,

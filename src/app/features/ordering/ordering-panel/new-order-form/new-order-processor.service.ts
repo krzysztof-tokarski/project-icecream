@@ -23,6 +23,8 @@ export class NewOrderProcessorService {
       useLetters: true,
     });
 
+    const currentDate = moment(new Date()).format('YYYY.MM.DD');
+
     const selectUser = (state: AppState) => state.user.currentUser as Client;
 
     this.store
@@ -49,9 +51,9 @@ export class NewOrderProcessorService {
           lastOrder: newOrder,
         });
 
+        setDoc(doc(getFirestore(), 'orders', seller.uid, currentDate, originalId), newOrder);
         // setDoc(doc(getFirestore(), 'users', seller.uid, 'orderList', originalId), newOrder);
         // setDoc(doc(getFirestore(), 'users', client.uid, 'orderList', originalId), newOrder);
-        setDoc(doc(getFirestore(), 'orders', seller.uid, client.uid, originalId), newOrder);
       });
   }
 }
