@@ -2,7 +2,7 @@
   <mat-card-title>COPY LAST ORDER</mat-card-title>
   <mat-card-content>
     <mat-card-subtitle>ICE CREAM YOU ORDERED LAST TIME</mat-card-subtitle>
-    <p>{{ (currentClient$ | async)?.lastOrder?.icecream?.name }}</p>
+    <p>{{ (currentClient$ | async)?.lastOrder?.icecream?.name | uppercase }}</p>
 
     <mat-card-subtitle>UNIT YOU ORDERED LAST TIME</mat-card-subtitle>
     <p>{{ (currentClient$ | async)?.lastOrder?.unit?.name | uppercase }}</p>

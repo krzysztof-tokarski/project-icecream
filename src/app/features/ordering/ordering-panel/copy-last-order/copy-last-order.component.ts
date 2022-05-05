@@ -43,7 +43,7 @@ export class CopyLastOrderComponent {
   }
 
   public onSubmit() {
-    this.currentClient$.subscribe(client => {
+    this.currentClient$.pipe(take(1)).subscribe(client => {
       if (client.lastOrder) {
         this.newOrderProcessorService.processOrder(client.lastOrder);
         this.router.navigate(['app']);
