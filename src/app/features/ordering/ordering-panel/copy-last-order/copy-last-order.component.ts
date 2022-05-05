@@ -37,10 +37,8 @@ export class CopyLastOrderComponent {
       .select(selectClient)
       .pipe(take(1))
       .subscribe(async client => {
-        if (client.lastOrder) {
-          const clientRef = doc(this.firestore, `users/${client.uid}`);
-          this.currentClient$ = docData(clientRef) as Observable<Client>;
-        }
+        const clientRef = doc(this.firestore, `users/${client.uid}`);
+        this.currentClient$ = docData(clientRef) as Observable<Client>;
       });
   }
 

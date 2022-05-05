@@ -11,8 +11,6 @@ import moment from 'moment';
 
 const generateUniqueId = require('generate-unique-id');
 
-// moment(new Date()).format("YYYY/MM/DD");
-
 @Injectable({
   providedIn: 'root',
 })
@@ -46,17 +44,14 @@ export class NewOrderProcessorService {
           date: moment(new Date()).format('YYYY.MM.DD'),
         };
 
-        setDoc(doc(getFirestore(), 'users', seller.uid, 'orderList', originalId), newOrder);
-        setDoc(doc(getFirestore(), 'users', client.uid, 'orderList', originalId), newOrder);
-        setDoc(doc(getFirestore(), 'orders', seller.uid, client.uid, originalId), newOrder);
-
-        await updateDoc(sellerRef, {
-          orderList: arrayUnion(newOrder),
-        });
+        await updateDoc(sellerRef, {});
         await updateDoc(clientRef, {
-          orderList: arrayUnion(newOrder),
           lastOrder: newOrder,
         });
+
+        // setDoc(doc(getFirestore(), 'users', seller.uid, 'orderList', originalId), newOrder);
+        // setDoc(doc(getFirestore(), 'users', client.uid, 'orderList', originalId), newOrder);
+        setDoc(doc(getFirestore(), 'orders', seller.uid, client.uid, originalId), newOrder);
       });
   }
 }

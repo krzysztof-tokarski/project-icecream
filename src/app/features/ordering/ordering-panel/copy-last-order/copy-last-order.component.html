@@ -8,6 +8,6 @@
     <p>{{ (currentClient$ | async)?.lastOrder?.unit?.name | uppercase }}</p>
     <mat-card-subtitle>AMOUNT YOU ORDERED LAST TIME</mat-card-subtitle>
     <p>{{ (currentClient$ | async)?.lastOrder?.amount }}</p>
-    <button mat-raised-button color="accent">CONFIRM ORDER</button>
+    <button (click)="onSubmit()" mat-raised-button color="accent">CONFIRM ORDER</button>
   </mat-card-content>
 </mat-card>
