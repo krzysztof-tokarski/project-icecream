@@ -1,14 +1,7 @@
 import { DeleteIceCreamFormDbProxyService } from './delete-ice-cream-form-db-proxy.service';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { Icecream } from '@shared/models/ice-cream/icecream.interface';
-import { AppState } from '@state/app.state';
-import { map } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
 import { IcecreamFormGeneratorService } from '../ice-cream-form-generator.service';
-import { Firestore, collectionData, collection, deleteDoc } from '@angular/fire/firestore';
-import { doc, getFirestore, updateDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'icy-delete-ice-cream-form',

@@ -78,7 +78,6 @@ export class NewOrderProcessorService {
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const setRef = (await icecreamSnap.data()) as Data;
-        console.log(setRef);
 
         // const docRef = doc(getFirestore(), 'users', sellerUid);
 

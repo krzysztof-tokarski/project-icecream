@@ -23,7 +23,7 @@ export class UnitListComponent {
       .select(selectUid)
       .pipe(take(1))
       .subscribe(uid => {
-        const collectionRef = collection(this.firestore, `unit/`);
+        const collectionRef = collection(this.firestore, `users/${uid}/unitList`);
         this.unitList$ = collectionData(collectionRef) as Observable<Unit[]>;
       });
   }
