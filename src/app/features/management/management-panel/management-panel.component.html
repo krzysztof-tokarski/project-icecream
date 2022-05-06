@@ -28,9 +28,9 @@
       <button mat-menu-item [matMenuTriggerFor]="unitmenu">MANAGE ICE CREAM UNITS</button>
     </mat-menu>
     <mat-menu #ordermanager="matMenu">
-      <button mat-menu-item>SIMPLE ORDERS LIST</button>
+      <button routerLink="icecream-production" mat-menu-item>ICECREAM FOR THE FOLLOWING DAY</button>
       <mat-divider></mat-divider>
-      <button routerLink="client-manager/order-list" mat-menu-item>ORDERS-BY-CLIENTS LIST</button>
+      <button routerLink="order-list-client" mat-menu-item>ORDERS-BY-CLIENTS LIST</button>
       <!-- todo -->
     </mat-menu>
     <mat-menu #adddelmenu="matMenu">

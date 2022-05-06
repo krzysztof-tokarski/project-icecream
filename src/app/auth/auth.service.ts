@@ -57,7 +57,7 @@ export class AuthService {
     const url = sessionStorage.getItem('url');
     if (url == '/auth') {
       if (user.role !== Role.Client) {
-        this.router.navigateByUrl('app/management-panel/client-manager/order-list');
+        this.router.navigateByUrl('app/management-panel/order-list-client');
         // this.router.navigateByUrl(this.router.url);
       } else {
         this.router.navigateByUrl('app/ordering-panel');

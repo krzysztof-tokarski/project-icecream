@@ -18,26 +18,22 @@ export class OrderingPanelComponent {
   public block!: boolean;
 
   constructor(private store: Store<AppState>) {
-    const selectUser = (state: AppState) => state.user.currentUser;
-
-    this.store.select(selectUser).subscribe(user => {
-      const x = user as Client;
-      const currentDate = moment(new Date()).format('YYYY.MM.DD');
-
-      console.log(x.lastOrder?.date);
-      console.log(currentDate);
-
-      if (x.lastOrder?.date == currentDate || x.lastOrder == undefined) {
-        this.blockCopy = true;
-      } else {
-        this.blockCopy = false;
-      }
-
-      if (x.lastOrder?.date == currentDate) {
-        this.block = true;
-      } else {
-        this.block = false;
-      }
-    });
+    // const selectUser = (state: AppState) => state.user.currentUser;
+    // this.store.select(selectUser).subscribe(user => {
+    //   const x = user as Client;
+    //   const currentDate = moment(new Date()).format('YYYY.MM.DD');
+    //   console.log(x.lastOrder?.date);
+    //   console.log(currentDate);
+    //   if (x.lastOrder?.date == currentDate || x.lastOrder == undefined) {
+    //     this.blockCopy = true;
+    //   } else {
+    //     this.blockCopy = false;
+    //   }
+    //   if (x.lastOrder?.date == currentDate) {
+    //     this.block = true;
+    //   } else {
+    //     this.block = false;
+    //   }
+    // });
   }
 }

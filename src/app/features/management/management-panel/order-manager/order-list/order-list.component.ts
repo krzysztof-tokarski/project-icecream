@@ -28,7 +28,7 @@ export class OrderListComponent implements OnInit {
       .select(selectUid)
       // .pipe(take(1))
       .subscribe(uid => {
-        const currentDate = moment(new Date()).format('YYYY.MM.DD');
+        const currentDate = moment(new Date()).format('DD.MM.YYYY');
 
         const collectionRef = collection(this.firestore, `orders/${uid}`, currentDate);
         this.orderList$ = collectionData(collectionRef) as Observable<Order[]>;

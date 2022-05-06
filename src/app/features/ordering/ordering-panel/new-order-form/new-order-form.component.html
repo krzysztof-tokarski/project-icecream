@@ -5,7 +5,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Icecream</mat-label>
         <mat-select formControlName="icecream">
-          <mat-option *ngFor="let icecream of (seller$ | async)?.icecreamList" [value]="icecream">
+          <mat-option *ngFor="let icecream of icecreamList$ | async" [value]="icecream">
             {{ icecream.name }}
           </mat-option>
         </mat-select>
@@ -14,7 +14,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Unit</mat-label>
         <mat-select formControlName="unit">
-          <mat-option *ngFor="let unit of (seller$ | async)?.unitList" [value]="unit">
+          <mat-option *ngFor="let unit of unitList$ | async" [value]="unit">
             {{ unit.name }}
           </mat-option>
         </mat-select>

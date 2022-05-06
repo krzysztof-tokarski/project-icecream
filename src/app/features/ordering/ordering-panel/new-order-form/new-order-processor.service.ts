@@ -23,7 +23,7 @@ export class NewOrderProcessorService {
       useLetters: true,
     });
 
-    const currentDate = moment(new Date()).format('YYYY.MM.DD');
+    const currentDate = moment(new Date()).format('DD.MM.YYYY');
 
     const selectUser = (state: AppState) => state.user.currentUser as Client;
 
@@ -38,20 +38,65 @@ export class NewOrderProcessorService {
 
         const newOrder: Order = {
           orderId: originalId,
-          client: client,
-          seller: seller,
+          clientUid: client.uid,
+          sellerUid: seller.uid,
+          clientDisplayName: client.displayName,
+          sellerDisplayName: seller.displayName,
           icecream: newOrderFormValue.icecream,
           unit: newOrderFormValue.unit,
           amount: newOrderFormValue.amount,
-          date: moment(new Date()).format('YYYY.MM.DD'),
+          date: currentDate,
         };
 
-        await updateDoc(sellerRef, {});
         await updateDoc(clientRef, {
           lastOrder: newOrder,
         });
 
-        setDoc(doc(getFirestore(), 'orders', seller.uid, currentDate, originalId), newOrder);
+        setDoc(doc(getFirestore(), 'orders', newOrder.sellerUid, currentDate, originalId), newOrder);
+        const icecreamRef = doc(
+          getFirestore(),
+          'icecreamProduction',
+          newOrder.sellerUid,
+          currentDate,
+          newOrder.icecream.name
+        );
+        const icecreamSnap = await getDoc(icecreamRef);
+
+        const icecreamValues = {
+          newOrder: [newOrderFormValue.unit],
+          amount: [newOrderFormValue.amount],
+        };
+
+        if (icecreamSnap.exists()) {
+          console.log('exists');
+
+          await updateDoc(icecreamRef, {
+            [newOrder.unit.name]: arrayUnion(newOrderFormValue.amount),
+          });
+        } else {
+          const newEntry = {
+            [newOrder.unit.name]: [newOrderFormValue.amount],
+          };
+
+          setDoc(
+            doc(getFirestore(), 'icecreamProduction', newOrder.sellerUid, currentDate, newOrder.icecream.name),
+            newEntry
+          );
+        }
+
+        // setDoc(
+        //   doc(
+        //     getFirestore(),
+        //     'orders',
+        //     seller.uid,
+        //     currentDate,
+        //     newOrder.icecream.name,
+        //     newOrder.client.uid,
+        //     newOrder.orderId
+        //   ),
+        //   newOrder
+        // );
+
         // setDoc(doc(getFirestore(), 'users', seller.uid, 'orderList', originalId), newOrder);
         // setDoc(doc(getFirestore(), 'users', client.uid, 'orderList', originalId), newOrder);
       });

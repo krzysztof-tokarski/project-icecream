@@ -49,12 +49,20 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
             component: ClientListComponent,
           },
           {
-            path: 'client-manager/order-list',
+            path: 'order-list-client',
             component: OrderListComponent,
             // resolve: {
             //   tableData: OrderListResolver,
             // },
           },
+          {
+            path: 'icecream-production',
+            component: OrderListComponent,
+            // resolve: {
+            //   tableData: OrderListResolver,
+            // },
+          },
+
           {
             path: 'icecream-manager',
             component: IceCreamManagerComponent,

@@ -5,8 +5,10 @@ import { Seller } from '../user/seller.interface';
 
 export interface Order {
   orderId: string;
-  client: Client;
-  seller: Seller;
+  clientUid: string;
+  clientDisplayName: string;
+  sellerUid: string;
+  sellerDisplayName: string;
   icecream: Icecream;
   unit: Unit;
   amount: number;

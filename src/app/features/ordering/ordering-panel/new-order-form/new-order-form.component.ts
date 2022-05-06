@@ -10,6 +10,7 @@ import { AppState } from '@state/app.state';
 import { Client } from '@shared/models/user/client.interface';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { Unit } from '@shared/models/ice-cream/unit.interface';
 
 @Component({
   selector: 'icy-new-order-form',
@@ -22,7 +23,7 @@ export class NewOrderFormComponent {
 
   public form: FormGroup = this.newOrderFormGeneratorService.createForm();
   public icecreamList$!: Observable<Icecream[]>;
-  public seller$!: Observable<Seller>;
+  public unitList$!: Observable<Unit[]>;
 
   constructor(
     private newOrderFormGeneratorService: NewOrderFormGeneratorService,
@@ -38,9 +39,11 @@ export class NewOrderFormComponent {
       .pipe(take(1))
       .subscribe(async client => {
         const icecreamListRef = collection(this.firestore, `users/${client.sellerUid}/icecreamList`);
+        const unitListRef = collection(this.firestore, `users/${client.sellerUid}/unitList`);
         this.icecreamList$ = collectionData(icecreamListRef) as Observable<Icecream[]>;
-        const docRef = doc(getFirestore(), 'users', client.sellerUid);
-        this.seller$ = docData(docRef) as Observable<Seller>;
+        this.unitList$ = collectionData(unitListRef) as Observable<Unit[]>;
+        // const docRef = doc(getFirestore(), 'users', client.sellerUid);
+        // this.seller$ = docData(docRef) as Observable<Seller>;
       });
   }
 
