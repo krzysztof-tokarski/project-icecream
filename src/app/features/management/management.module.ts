@@ -1,3 +1,4 @@
+// import { OrderListResolver } from './management-panel/order-manager/order-list/order-list-resolver.resolver';
 import { IceCreamListComponent } from './management-panel/ice-cream-manager/ice-cream-list/ice-cream-list.component';
 import { IceCreamManagerComponent } from './management-panel/ice-cream-manager/ice-cream-manager.component';
 import { SharedModule } from '@shared/shared-module/shared.module';
@@ -28,6 +29,7 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
     UnitListComponent,
     ClientListComponent,
     OrderListComponent,
+
     // AssignLocalUnitsComponent,
   ],
   imports: [
@@ -49,6 +51,9 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
           {
             path: 'client-manager/order-list',
             component: OrderListComponent,
+            // resolve: {
+            //   tableData: OrderListResolver,
+            // },
           },
           {
             path: 'icecream-manager',

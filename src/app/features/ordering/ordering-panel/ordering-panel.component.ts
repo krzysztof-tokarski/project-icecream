@@ -14,6 +14,7 @@ import moment from 'moment';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderingPanelComponent {
+  public blockCopy!: boolean;
   public block!: boolean;
 
   constructor(private store: Store<AppState>) {
@@ -27,6 +28,12 @@ export class OrderingPanelComponent {
       console.log(currentDate);
 
       if (x.lastOrder?.date == currentDate || x.lastOrder == undefined) {
+        this.blockCopy = true;
+      } else {
+        this.blockCopy = false;
+      }
+
+      if (x.lastOrder?.date == currentDate) {
         this.block = true;
       } else {
         this.block = false;
