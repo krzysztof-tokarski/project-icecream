@@ -3,5 +3,5 @@ import { Icecream } from './../../../../shared/models/ice-cream/icecream.interfa
 export interface NewOrderFormValue {
   icecream: Icecream;
   unit: Unit;
-  amount: number;
+  amount: string;
 }

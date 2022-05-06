@@ -15,6 +15,7 @@ import { DeleteGlobalUnitsFormComponent } from './management-panel/ice-cream-man
 import { UnitListComponent } from './management-panel/ice-cream-manager/unit-list/unit-list.component';
 import { ClientListComponent } from './management-panel/client-manager/client-list/client-list.component';
 import { OrderListComponent } from './management-panel/order-manager/order-list/order-list.component';
+import { UnifiedListComponent } from './management-panel/order-manager/order-list/unified-list/unified-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
     UnitListComponent,
     ClientListComponent,
     OrderListComponent,
+    UnifiedListComponent,
 
     // AssignLocalUnitsComponent,
   ],
@@ -57,7 +59,7 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
           },
           {
             path: 'icecream-production',
-            component: OrderListComponent,
+            component: UnifiedListComponent,
             // resolve: {
             //   tableData: OrderListResolver,
             // },

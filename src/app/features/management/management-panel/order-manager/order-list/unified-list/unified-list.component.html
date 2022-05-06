@@ -1,0 +1,33 @@
+<div *ngIf="(orderList$ | async)?.length">
+  <h2>THAT MUCH ICE CREAM IS TO BE DELIVERED TOMORROW</h2>
+  <table class="mat-elevation-z8">
+    <tr>
+      <th>NO.</th>
+      <th>CLIENT</th>
+      <th>ICE CREAM</th>
+      <th>UNIT</th>
+      <th>AMOUNT</th>
+      <th>ORDER DATE</th>
+    </tr>
+    <tr *ngFor="let order of orderList$ | async; let index = index">
+      <td>
+        {{ index + 1 }}
+      </td>
+      <td>
+        {{ order.clientDisplayName }}
+      </td>
+      <td>
+        {{ order.icecream.name }}
+      </td>
+      <td>
+        {{ order.unit.name }}
+      </td>
+      <td>
+        {{ order.amount }}
+      </td>
+      <td>
+        {{ order.date }}
+      </td>
+    </tr>
+  </table>
+</div>

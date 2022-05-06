@@ -19,7 +19,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class OrderListComponent implements OnInit {
   public orderList$!: Observable<Order[]>;
 
-  constructor(private store: Store<AppState>, private firestore: Firestore, private activatedRoute: ActivatedRoute) {}
+  constructor(private store: Store<AppState>, private firestore: Firestore) {}
 
   public ngOnInit(): void {
     const selectUid = (state: AppState) => state.user.currentUser?.uid;

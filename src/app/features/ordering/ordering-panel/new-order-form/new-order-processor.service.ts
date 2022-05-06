@@ -5,7 +5,7 @@ import { NewOrderFormValue } from './new-order-form.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { take } from 'rxjs';
-import { doc, getFirestore, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getFirestore, getDoc, setDoc, updateDoc, arrayUnion, FieldValue } from 'firebase/firestore';
 import { Client } from '@shared/models/user/client.interface';
 import moment from 'moment';
 
@@ -22,6 +22,9 @@ export class NewOrderProcessorService {
       length: 28,
       useLetters: true,
     });
+
+    // const amount = newOrderFormValue.amount as string;
+    const parsedAmount = parseInt(newOrderFormValue.amount);
 
     const currentDate = moment(new Date()).format('DD.MM.YYYY');
 
@@ -44,7 +47,7 @@ export class NewOrderProcessorService {
           sellerDisplayName: seller.displayName,
           icecream: newOrderFormValue.icecream,
           unit: newOrderFormValue.unit,
-          amount: newOrderFormValue.amount,
+          amount: parsedAmount,
           date: currentDate,
         };
 
@@ -62,20 +65,89 @@ export class NewOrderProcessorService {
         );
         const icecreamSnap = await getDoc(icecreamRef);
 
-        const icecreamValues = {
-          newOrder: [newOrderFormValue.unit],
-          amount: [newOrderFormValue.amount],
-        };
+        interface UnitDTO {
+          unitName: string;
+          value: number;
+          amount: number;
+          calculated: number;
+        }
+
+        interface Data {
+          icecreamName: string;
+          units: UnitDTO[];
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const setRef = (await icecreamSnap.data()) as Data;
+        console.log(setRef);
+
+        // const docRef = doc(getFirestore(), 'users', sellerUid);
 
         if (icecreamSnap.exists()) {
-          console.log('exists');
-
-          await updateDoc(icecreamRef, {
-            [newOrder.unit.name]: arrayUnion(newOrderFormValue.amount),
+          const cherryPick = setRef.units.filter(unit => {
+            return unit.unitName == newOrderFormValue.unit.name;
           });
+          const filtered = setRef.units.filter(unit => {
+            return unit.unitName !== newOrderFormValue.unit.name;
+          });
+
+          if (cherryPick.length == 0) {
+            const newUnit: UnitDTO = {
+              unitName: newOrderFormValue.unit.name,
+              value: newOrderFormValue.unit.value,
+              amount: parsedAmount,
+              calculated: parsedAmount * newOrderFormValue.unit.value,
+            };
+
+            const arr = setRef.units;
+            arr.push(newUnit);
+
+            await updateDoc(icecreamRef, {
+              icecreamName: setRef.icecreamName,
+              units: arr,
+            });
+          }
+
+          if (cherryPick.length == 1) {
+            cherryPick[0].amount += parsedAmount;
+            cherryPick[0].calculated += parsedAmount * newOrderFormValue.unit.value;
+            filtered.push(cherryPick[0]);
+
+            await updateDoc(icecreamRef, {
+              icecreamName: setRef.icecreamName,
+              units: setRef.units,
+
+              // units: arrayUnion({
+              //   name: newOrder.unit.name,
+              //   amount: newOrderFormValue.amount,
+              //   value: newOrderFormValue.unit.value,
+              // }),
+            });
+          }
         } else {
-          const newEntry = {
-            [newOrder.unit.name]: [newOrderFormValue.amount],
+          const newEntry: Data = {
+            icecreamName: newOrderFormValue.icecream.name,
+            units: [
+              {
+                unitName: newOrderFormValue.unit.name,
+                value: newOrderFormValue.unit.value,
+                amount: parsedAmount,
+                calculated: parsedAmount * newOrderFormValue.unit.value,
+              },
+            ],
+
+            // name: newOrder.icecream.name,
+            // units: [
+            //   {
+            //     name: newOrder.unit.name,
+            //     amount: newOrderFormValue.amount,
+            //     value: newOrderFormValue.unit.value,
+            //   },
+            // ],
+            // [newOrder.unit.name]: {
+            //   amount: [newOrderFormValue.amount],
+            //   value: newOrderFormValue.unit.value,
+            // },
           };
 
           setDoc(
@@ -83,22 +155,6 @@ export class NewOrderProcessorService {
             newEntry
           );
         }
-
-        // setDoc(
-        //   doc(
-        //     getFirestore(),
-        //     'orders',
-        //     seller.uid,
-        //     currentDate,
-        //     newOrder.icecream.name,
-        //     newOrder.client.uid,
-        //     newOrder.orderId
-        //   ),
-        //   newOrder
-        // );
-
-        // setDoc(doc(getFirestore(), 'users', seller.uid, 'orderList', originalId), newOrder);
-        // setDoc(doc(getFirestore(), 'users', client.uid, 'orderList', originalId), newOrder);
       });
   }
 }

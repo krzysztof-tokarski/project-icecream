@@ -11,6 +11,7 @@ import { Client } from '@shared/models/user/client.interface';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Unit } from '@shared/models/ice-cream/unit.interface';
+import { NewOrderFormValue } from './new-order-form.interface';
 
 @Component({
   selector: 'icy-new-order-form',
@@ -48,7 +49,8 @@ export class NewOrderFormComponent {
   }
 
   public async onSubmit() {
-    this.newOrderProcessorService.processOrder(this.form.value);
+    const formValue: NewOrderFormValue = this.form.value;
+    this.newOrderProcessorService.processOrder(formValue);
     this.formGroupDirective.resetForm();
     this.router.navigate(['app']);
   }
