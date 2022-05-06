@@ -11,6 +11,17 @@ import moment from 'moment';
 
 const generateUniqueId = require('generate-unique-id');
 
+export interface UnitDTO {
+  unitName: string;
+  value: number;
+  amount: number;
+  calculated: number;
+}
+
+export interface Data {
+  icecreamName: string;
+  units: UnitDTO[];
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -64,18 +75,6 @@ export class NewOrderProcessorService {
           newOrder.icecream.name
         );
         const icecreamSnap = await getDoc(icecreamRef);
-
-        interface UnitDTO {
-          unitName: string;
-          value: number;
-          amount: number;
-          calculated: number;
-        }
-
-        interface Data {
-          icecreamName: string;
-          units: UnitDTO[];
-        }
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const setRef = (await icecreamSnap.data()) as Data;

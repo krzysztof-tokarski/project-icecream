@@ -1,33 +1,70 @@
 <div *ngIf="(orderList$ | async)?.length">
   <h2>THAT MUCH ICE CREAM IS TO BE DELIVERED TOMORROW</h2>
-  <table class="mat-elevation-z8">
+
+  <mat-accordion *ngFor="let item of orderList$ | async">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p>{{ item.icecreamName | uppercase }}</p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table>
+        <tr>
+          <th>NO.</th>
+          <th>UNIT</th>
+          <th>UNIT AMOUNT</th>
+          <th>UNIT TOTAL</th>
+        </tr>
+        <ng-container *ngFor="let unit of item.units; let index = index">
+          <tr>
+            <td>
+              {{ index + 1 }}
+            </td>
+            <td>
+              {{ unit.unitName | uppercase }}
+            </td>
+            <td>
+              {{ unit.amount }}
+            </td>
+            <td>{{ unit.calculated }} G</td>
+          </tr>
+        </ng-container>
+      </table>
+      <div class="total">
+        <span>TOTAL: </span>
+        <ng-container icyCalculator [item]="item"></ng-container>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<!-- <table class="mat-elevation-z8">
     <tr>
       <th>NO.</th>
-      <th>CLIENT</th>
       <th>ICE CREAM</th>
+      <th></th>
       <th>UNIT</th>
       <th>AMOUNT</th>
       <th>ORDER DATE</th>
     </tr>
-    <tr *ngFor="let order of orderList$ | async; let index = index">
+    <tr *ngFor="let order; as: Data; of: orderList$ | async; let index = index">
       <td>
         {{ index + 1 }}
       </td>
       <td>
-        {{ order.clientDisplayName }}
+        {{ order.icecreamName }}
       </td>
       <td>
-        {{ order.icecream.name }}
+        {{ order }}
       </td>
       <td>
-        {{ order.unit.name }}
+        {{ order }}
       </td>
       <td>
-        {{ order.amount }}
+        {{ order }}
       </td>
       <td>
-        {{ order.date }}
+        {{ order }}
       </td>
     </tr>
-  </table>
-</div>
+  </table> -->

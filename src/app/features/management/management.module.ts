@@ -16,6 +16,8 @@ import { UnitListComponent } from './management-panel/ice-cream-manager/unit-lis
 import { ClientListComponent } from './management-panel/client-manager/client-list/client-list.component';
 import { OrderListComponent } from './management-panel/order-manager/order-list/order-list.component';
 import { UnifiedListComponent } from './management-panel/order-manager/order-list/unified-list/unified-list.component';
+import { CalculatorDirective } from './management-panel/order-manager/order-list/unified-list/calculator.directive';
+import { TotalCellComponent } from './management-panel/order-manager/order-list/unified-list/components/total-cell/total-cell.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { UnifiedListComponent } from './management-panel/order-manager/order-lis
     ClientListComponent,
     OrderListComponent,
     UnifiedListComponent,
+    CalculatorDirective,
+    TotalCellComponent,
 
     // AssignLocalUnitsComponent,
   ],
