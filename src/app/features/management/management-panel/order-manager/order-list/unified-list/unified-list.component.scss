@@ -5,6 +5,10 @@
 }
 
 :host > div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
   text-align: center;
   max-width: 1000px;
   padding: 20px;
@@ -40,7 +44,7 @@ th, td {
 }
 
 th {
-  background-color: black;
+  background-color: royalblue;
   color: white;
   font-weight: bold;
   font-size: 1.2em;
@@ -64,3 +68,12 @@ tr > * {
   padding: 10px;
 }
 
+.h2 {
+  width: 50%;
+  text-align: center;
+}
+
+.route {
+  color: royalblue;
+  font-weight: bold;
+}

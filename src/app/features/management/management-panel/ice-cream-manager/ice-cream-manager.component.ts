@@ -9,8 +9,4 @@ import { Router } from '@angular/router';
 })
 export class IceCreamManagerComponent {
   constructor(private router: Router) {}
-
-  public changeOfRoutes() {
-    sessionStorage.setItem('url', this.router.url);
-  }
 }

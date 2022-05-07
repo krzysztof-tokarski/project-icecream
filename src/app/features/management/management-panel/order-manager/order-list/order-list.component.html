@@ -1,33 +1,48 @@
-<div *ngIf="(orderList$ | async)?.length">
-  <h2>ORDERS FOR THE FOLLOWING DAY</h2>
-  <table class="mat-elevation-z8">
-    <tr>
-      <th>NO.</th>
-      <th>CLIENT</th>
-      <th>ICE CREAM</th>
-      <th>UNIT</th>
-      <th>AMOUNT</th>
-      <th>ORDER DATE</th>
-    </tr>
-    <tr *ngFor="let order of orderList$ | async; let index = index">
-      <td>
-        {{ index + 1 }}
-      </td>
-      <td>
-        {{ order.clientDisplayName }}
-      </td>
-      <td>
-        {{ order.icecream.name }}
-      </td>
-      <td>
-        {{ order.unit.name }}
-      </td>
-      <td>
-        {{ order.amount }}
-      </td>
-      <td>
-        {{ order.date }}
-      </td>
-    </tr>
-  </table>
-</div>
+<ng-container *ngIf="orderList$ | async; else loading">
+  <ng-container *ngIf="(orderList$ | async)?.length; else message">
+    <div>
+      <h2>ORDERS FOR THE FOLLOWING DAY</h2>
+      <table class="mat-elevation-z8">
+        <tr>
+          <th>NO.</th>
+          <th>CLIENT</th>
+          <th>ICE CREAM</th>
+          <th>UNIT</th>
+          <th>AMOUNT</th>
+          <th>ORDER DATE</th>
+        </tr>
+        <tr *ngFor="let order of orderList$ | async; let index = index">
+          <td>
+            {{ index + 1 }}
+          </td>
+          <td>
+            {{ order.clientDisplayName }}
+          </td>
+          <td>
+            {{ order.icecream.name }}
+          </td>
+          <td>
+            {{ order.unit.name }}
+          </td>
+          <td>
+            {{ order.amount }}
+          </td>
+          <td>
+            {{ order.date }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #message>
+  <h2>
+    Your <b class="route">LIST OF ORDERS FOR THE FOLLOWING DAY</b> was supposed to render here, but something went
+    wrong. Possibly your Clients still haven't made their mind on what to pick.
+  </h2>
+</ng-template>

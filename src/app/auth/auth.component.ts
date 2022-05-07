@@ -6,7 +6,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent {
-  constructor() {
-    window.location.reload();
-  }
+  constructor() {}
 }

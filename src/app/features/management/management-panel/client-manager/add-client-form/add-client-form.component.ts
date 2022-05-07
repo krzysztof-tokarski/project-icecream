@@ -1,5 +1,5 @@
+import { AddClientDbProxyService } from './add-client-db-proxy.service';
 import { AddClientFormValue } from './add-client-form.interface';
-import { AddClientFirebaseProxyService } from './add-client-firebase-proxy.service';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { AddClientFormGeneratorService } from './add-client-form-generator.service';
@@ -17,12 +17,12 @@ export class AddClientFormComponent {
 
   constructor(
     private addClientFormGeneratorService: AddClientFormGeneratorService,
-    private addClientFirebaseProxyService: AddClientFirebaseProxyService
+    private addClientDbProxyService: AddClientDbProxyService
   ) {}
 
   public onSubmit() {
     const formValue: AddClientFormValue = this.form.value;
-    this.addClientFirebaseProxyService.addClient(formValue);
+    this.addClientDbProxyService.addClient(formValue);
     this.formGroupDirective.resetForm();
   }
 }

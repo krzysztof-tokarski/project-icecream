@@ -3,8 +3,6 @@ import { LoginFormGeneratorService } from './login-form-generator.service';
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { LoginFormValue } from './login-form.interface';
-import { getAuth } from 'firebase/auth';
-
 @Component({
   selector: 'icy-login-form',
   templateUrl: './login-form.component.html',

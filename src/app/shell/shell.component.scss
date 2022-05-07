@@ -6,6 +6,7 @@
 }
 
 header {
+  position: relative;
   width: 100%;
   min-height: 75px;
   display: flex;
@@ -38,12 +39,13 @@ mat-divider {
 
 button {
   width: 100px;
-  position: fixed;
-  right: 10px;
+  position: absolute;
+  top: 20px;
+  right:20px;
 }
 
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 820px) {
   button {
     display: none;
   }

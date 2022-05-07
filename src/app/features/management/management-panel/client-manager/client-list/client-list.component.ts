@@ -17,7 +17,6 @@ export class ClientListComponent {
 
   constructor(private store: Store<AppState>, private firestore: Firestore) {
     const selectUid = (state: AppState) => state.user.currentUser?.uid;
-    // to do
     this.store
       .select(selectUid)
       .pipe(take(1))

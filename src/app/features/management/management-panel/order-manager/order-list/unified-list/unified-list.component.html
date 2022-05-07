@@ -1,70 +1,54 @@
-<div *ngIf="(orderList$ | async)?.length">
-  <h2>THAT MUCH ICE CREAM IS TO BE DELIVERED TOMORROW</h2>
+<ng-container *ngIf="orderList$ | async; else loading">
+  <ng-container *ngIf="(orderList$ | async)?.length; else message">
+    <div>
+      <h2>THAT MUCH ICE CREAM IS TO BE DELIVERED TOMORROW</h2>
 
-  <mat-accordion *ngFor="let item of orderList$ | async">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <p>{{ item.icecreamName | uppercase }}</p>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <table>
-        <tr>
-          <th>NO.</th>
-          <th>UNIT</th>
-          <th>UNIT AMOUNT</th>
-          <th>UNIT TOTAL</th>
-        </tr>
-        <ng-container *ngFor="let unit of item.units; let index = index">
-          <tr>
-            <td>
-              {{ index + 1 }}
-            </td>
-            <td>
-              {{ unit.unitName | uppercase }}
-            </td>
-            <td>
-              {{ unit.amount }}
-            </td>
-            <td>{{ unit.calculated }} G</td>
-          </tr>
-        </ng-container>
-      </table>
-      <div class="total">
-        <span>TOTAL: </span>
-        <ng-container icyCalculator [item]="item"></ng-container>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
+      <mat-accordion *ngFor="let item of orderList$ | async">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p>{{ item.icecreamName | uppercase }}</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <table>
+            <tr>
+              <th>NO.</th>
+              <th>UNIT</th>
+              <th>UNIT AMOUNT</th>
+              <th>UNIT TOTAL</th>
+            </tr>
+            <ng-container *ngFor="let unit of item.units; let index = index">
+              <tr>
+                <td>
+                  {{ index + 1 }}
+                </td>
+                <td>
+                  {{ unit.unitName | uppercase }}
+                </td>
+                <td>
+                  {{ unit.amount }}
+                </td>
+                <td>{{ unit.calculated }} G</td>
+              </tr>
+            </ng-container>
+          </table>
+          <div class="total">
+            <span>TOTAL: </span>
+            <ng-container icyCalculator [item]="item"></ng-container>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </ng-container>
+</ng-container>
 
-<!-- <table class="mat-elevation-z8">
-    <tr>
-      <th>NO.</th>
-      <th>ICE CREAM</th>
-      <th></th>
-      <th>UNIT</th>
-      <th>AMOUNT</th>
-      <th>ORDER DATE</th>
-    </tr>
-    <tr *ngFor="let order; as: Data; of: orderList$ | async; let index = index">
-      <td>
-        {{ index + 1 }}
-      </td>
-      <td>
-        {{ order.icecreamName }}
-      </td>
-      <td>
-        {{ order }}
-      </td>
-      <td>
-        {{ order }}
-      </td>
-      <td>
-        {{ order }}
-      </td>
-      <td>
-        {{ order }}
-      </td>
-    </tr>
-  </table> -->
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #message>
+  <h2 class="h2">
+    Your <b class="route">ICE CREAM PRODUCTION CHART</b> was supposed to render here, but something went wrong. Possibly
+    your Clients still haven't made their mind on what to pick.
+  </h2>
+</ng-template>

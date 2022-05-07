@@ -1,12 +1,23 @@
-<mat-card *ngIf="icecreamList$ | async; else loading" class="card">
-  <mat-card-title>ICE CREAM LIST</mat-card-title>
-  <mat-list>
-    <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
-      <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
-    >
-  </mat-list>
-</mat-card>
+<ng-container *ngIf="icecreamList$ | async; else loading">
+  <ng-container *ngIf="(icecreamList$ | async)?.length; else message">
+    <mat-card class="card">
+      <mat-card-title>ICE CREAM LIST</mat-card-title>
+      <mat-list>
+        <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
+          <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
+        >
+      </mat-list>
+    </mat-card>
+  </ng-container>
+</ng-container>
 
 <ng-template #loading>
   <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #message>
+  <h2>
+    Your <b class="route">ICE CREAM LIST</b> was supposed to render here, but something went wrong. Try adding a new Ice
+    Cream.
+  </h2>
 </ng-template>

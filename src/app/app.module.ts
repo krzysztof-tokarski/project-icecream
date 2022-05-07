@@ -17,6 +17,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { AppState } from './state/app.state';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { authReducer } from '@state/auth/auth.reducer';
 import { userReducer } from '@state/user/user.reducer';
@@ -35,6 +36,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    RouterModule,
     HttpClientModule,
     SharedModule,
     BrowserModule,

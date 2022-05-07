@@ -13,9 +13,6 @@ import { Role } from '@shared/models/user/role.enum';
     CommonModule,
     SharedModule,
     RouterModule.forChild([
-      // tutaj zacznij dodawać routing aplikacji
-      // nie zapomnij o przekierwaniu na domyślny path z  path === ''
-
       {
         path: 'app',
         component: ShellComponent,
