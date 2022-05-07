@@ -1,8 +1,8 @@
 import { AuthService } from '../auth.service';
 import { LoginFormGeneratorService } from './login-form-generator.service';
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { LoginFormValue } from './login-form.interface';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 @Component({
   selector: 'icy-login-form',
   templateUrl: './login-form.component.html',
@@ -11,8 +11,8 @@ import { LoginFormValue } from './login-form.interface';
 })
 export class LoginFormComponent {
   @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
-
   public form: FormGroup = this.loginFormGeneratorService.createForm();
+  public loginFail = this.authService.loginFailObservable;
 
   constructor(private loginFormGeneratorService: LoginFormGeneratorService, private authService: AuthService) {}
 

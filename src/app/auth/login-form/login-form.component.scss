@@ -44,6 +44,7 @@
   &__form {
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 10px;
   }
 }
@@ -62,3 +63,11 @@
   }
 }
 
+p {
+  position: absolute;
+  top: 140px;
+  font-size: 12px;
+  color: red;
+  width: 100%;
+  text-align: center;
+}

@@ -1,5 +1,5 @@
 import { LoginFormValue } from './login-form/login-form.interface';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -10,10 +10,15 @@ import { UserActions } from '@state/user/user.actions';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { Role } from '@shared/models/user/role.enum';
 import { UserType } from '@shared/models/user/user.type';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private loginFail = new BehaviorSubject<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public loginFailObservable = this.loginFail.asObservable();
+
   constructor(private router: Router, private store: Store<AppState>) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const userFromStorage: UserType = JSON.parse(sessionStorage.getItem('user')!);
@@ -47,9 +52,16 @@ export class AuthService {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   public signIn(form: LoginFormValue) {
     setPersistence(getAuth(), browserSessionPersistence).then(() => {
-      signInWithEmailAndPassword(getAuth(), form.email, form.password).then(async userCredential => {
-        await this.getUserFromDB(userCredential.user.uid);
-      });
+      signInWithEmailAndPassword(getAuth(), form.email, form.password)
+        .then(async userCredential => {
+          await this.getUserFromDB(userCredential.user.uid);
+        })
+        .catch(() => {
+          this.loginFail.next(true);
+          setTimeout(() => {
+            this.loginFail.next(false);
+          }, 2500);
+        });
     });
   }
 
