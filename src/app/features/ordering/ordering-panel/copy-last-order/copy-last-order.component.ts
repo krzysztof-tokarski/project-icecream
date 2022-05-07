@@ -32,7 +32,7 @@ export class CopyLastOrderComponent {
         const clientRef = doc(this.firestore, `users/${client.uid}`);
         this.currentClient$ = docData(clientRef) as Observable<Client>;
         this.currentClient$.pipe(take(1)).subscribe(client => {
-          if (client.lastOrder?.date !== moment(new Date()).format('DD.MM.YYYY')) {
+          if (client.lastOrder?.date === moment(new Date()).format('DD.MM.YYYY')) {
             this.alreadyOrdered = true;
           }
         });
