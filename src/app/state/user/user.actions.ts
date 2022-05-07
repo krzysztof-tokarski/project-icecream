@@ -1,4 +1,4 @@
-import { UserType } from './../../shared/models/user/user.type';
+import { UserType } from '@shared/models/user/user.type';
 import { createAction, props } from '@ngrx/store';
 
 export const UserActions = {

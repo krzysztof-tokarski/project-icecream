@@ -2,7 +2,7 @@ import { Unit } from './unit.interface';
 
 export interface Icecream {
   name: string;
-  icecreamId?: string;
+  icecreamId: string;
   units?: Unit[];
-  sellerUid?: string;
+  sellerUid: string;
 }

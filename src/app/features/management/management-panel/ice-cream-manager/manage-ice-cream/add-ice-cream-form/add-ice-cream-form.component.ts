@@ -11,14 +11,12 @@ import { IcecreamFormGeneratorService } from '../ice-cream-form-generator.servic
 })
 export class AddIcecreamFormComponent {
   @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
-  public form!: FormGroup;
+  public form: FormGroup = this.icecreamFormGeneratorService.createForm();
 
   constructor(
     private icecreamFormGeneratorService: IcecreamFormGeneratorService,
     private addIcecreamFormDbProxyService: AddIcecreamFormDbProxyService
-  ) {
-    this.form = this.icecreamFormGeneratorService.createForm();
-  }
+  ) {}
 
   public onSubmit() {
     const formValue: AddIcecreamFormInterface = this.form.value;

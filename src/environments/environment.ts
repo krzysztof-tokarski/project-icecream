@@ -1,5 +1,4 @@
 export const environment = {
-  // API_URL: "<here goes api url>",
   production: false,
   firebase: {
     apiKey: 'AIzaSyDmknldActfY9SI1FbFKE2thRSR0urvbyo',

@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { take } from 'rxjs';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
-
+import { doc, Firestore, getFirestore, setDoc } from '@angular/fire/firestore';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const generateUniqueId = require('generate-unique-id');
-
 @Injectable({
   providedIn: 'root',
 })
@@ -17,18 +16,22 @@ export class AddIcecreamFormDbProxyService {
 
   public async addIcecream(form: AddIcecreamFormInterface) {
     const selectUid = (state: AppState) => state.user.currentUser as Seller;
+    const originalId: string = generateUniqueId({
+      length: 28,
+      useLetters: true,
+    });
 
     this.store
       .select(selectUid)
       .pipe(take(1))
       .subscribe(async seller => {
         const newIcecream: Icecream = {
+          icecreamId: originalId,
           name: form.name,
           sellerUid: seller.uid,
         };
 
-        const collectionRef = collection(this.firestore, `users/${seller.uid}/icecreamList`);
-        addDoc(collectionRef, newIcecream);
+        setDoc(doc(getFirestore(), 'users', seller.uid, 'icecreamList', originalId), newIcecream);
       });
   }
 }

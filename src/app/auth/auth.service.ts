@@ -15,6 +15,7 @@ import { UserType } from '@shared/models/user/user.type';
 })
 export class AuthService {
   constructor(private router: Router, private store: Store<AppState>) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const userFromStorage: UserType = JSON.parse(sessionStorage.getItem('user')!);
     if (userFromStorage) {
       this.store.dispatch(AuthActions.setAuth());
@@ -38,6 +39,7 @@ export class AuthService {
       }
     } else {
       //  TODO :/
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.router.navigateByUrl(url!);
     }
   }

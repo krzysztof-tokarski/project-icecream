@@ -10,7 +10,6 @@ export class NewOrderFormGeneratorService {
   public createForm() {
     const form = this.formBuilder.group({
       icecream: this.formBuilder.control('', [Validators.required]),
-      // ?????????????????????????????
       unit: this.formBuilder.control('', [Validators.required]),
       amount: this.formBuilder.control('', [Validators.required]),
     });

@@ -11,17 +11,15 @@ import { IcecreamFormGeneratorService } from '../ice-cream-form-generator.servic
 })
 export class DeleteIcecreamFormComponent {
   @ViewChild(FormGroupDirective) private formGroupDirective!: FormGroupDirective;
-  public form!: FormGroup;
+  public form: FormGroup = this.icecreamFormGeneratorService.createForm();
 
   constructor(
     private deleteIceCreamFormDbProxyService: DeleteIceCreamFormDbProxyService,
     private icecreamFormGeneratorService: IcecreamFormGeneratorService
-  ) {
-    this.form = this.icecreamFormGeneratorService.createForm();
-  }
+  ) {}
 
   public onSubmit() {
-    this.deleteIceCreamFormDbProxyService.onSubmit(this.form);
+    this.deleteIceCreamFormDbProxyService.onSubmit(this.form.value);
     this.formGroupDirective.resetForm();
   }
 }

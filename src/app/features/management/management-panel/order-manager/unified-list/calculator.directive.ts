@@ -1,12 +1,12 @@
 import { TotalCellComponent } from './components/total-cell/total-cell.component';
 import { Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { Data } from '@features/ordering/ordering-panel/new-order-form/new-order-processor.service';
+import { UnifiedListData } from '@shared/models/order/unified-list-item.interface';
 
 @Directive({
   selector: '[icyCalculator]',
 })
 export class CalculatorDirective implements OnInit {
-  @Input() public item!: Data;
+  @Input() public item!: UnifiedListData;
 
   constructor(private viewContainerRef: ViewContainerRef) {}
 

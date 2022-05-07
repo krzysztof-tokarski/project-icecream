@@ -29,25 +29,11 @@ export class DeleteGlobalUnitsFormDbProxyService {
           if (filteredUnit.length === 0) {
             alert("there's no such unit");
           } else {
-            // filteredUnit[0].unitId\
-
             const docRef = doc(getFirestore(), `users/${user?.uid}/unitList/${filteredUnit[0].unitId}`);
-
-            console.log(filteredUnit);
 
             deleteDoc(docRef);
           }
         });
-
-        // const docRef = doc(getFirestore(),
-
-        // const docSnap = getDoc(docRef);
-        // if (docSnap.exists()) {
-        //   this.seller = docSnap.data() as Seller;
-        // }
-
-        // this.icecreamList$ = collectionData(icecreamListRef) as Observable<Icecream[]>;
-        // const docRef = doc(getFirestore(), 'users', client.sellerUid);
       });
   }
 }

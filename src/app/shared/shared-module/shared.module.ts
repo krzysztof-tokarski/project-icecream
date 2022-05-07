@@ -7,16 +7,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { MatCommonModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 const ANGULAR_MODULES = [FormsModule, ReactiveFormsModule];
@@ -29,14 +26,11 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatButtonModule,
   MatTableModule,
-  MatSlideToggleModule,
   MatSelectModule,
   MatOptionModule,
-  MatCommonModule,
   MatDividerModule,
   MatProgressSpinnerModule,
   MatListModule,
-  MatGridListModule,
   MatExpansionModule,
 ];
 

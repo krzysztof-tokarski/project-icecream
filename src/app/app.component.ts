@@ -11,7 +11,6 @@ export class AppComponent {
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd) {
         sessionStorage.setItem('url', this.router.url);
-        // console.log(sessionStorage.getItem('url'));
       }
     });
   }

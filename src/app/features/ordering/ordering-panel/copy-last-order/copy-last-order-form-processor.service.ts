@@ -1,5 +1,5 @@
-import { Seller } from './../../../../shared/models/user/seller.interface';
-import { Order } from './../../../../shared/models/order/order.interface';
+import { Seller } from '@shared/models/user/seller.interface';
+import { Order } from '@shared/models/order/order.interface';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';

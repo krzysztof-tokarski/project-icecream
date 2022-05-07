@@ -1,11 +1,11 @@
+import { Seller } from '@shared/models/user/seller.interface';
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { AppState } from '@state/app.state';
 import { take } from 'rxjs';
 import { Unit } from '@shared/models/ice-cream/unit.interface';
-import { arrayUnion, doc, getFirestore, setDoc, updateDoc } from '@angular/fire/firestore';
+import { doc, getFirestore, setDoc } from '@angular/fire/firestore';
 import { AddGlobalUnitsFormInterface } from './add-global-units-form-interface';
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const generateUniqueId = require('generate-unique-id');
 
@@ -16,14 +16,12 @@ export class AddGlobalUnitsFormDbProxyService {
   constructor(private store: Store<AppState>) {}
 
   public onSubmit(form: AddGlobalUnitsFormInterface) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const selectUid: any = (state: AppState) => state.user.currentUser?.uid;
-    // to do
+    const selectUser = (state: AppState) => state.user.currentUser as Seller;
 
     this.store
-      .select(selectUid)
+      .select(selectUser)
       .pipe(take(1))
-      .subscribe(async sellerUid => {
+      .subscribe(seller => {
         const originalId: string = generateUniqueId({
           length: 28,
           useLetters: true,
@@ -33,25 +31,10 @@ export class AddGlobalUnitsFormDbProxyService {
           name: form.name,
           value: form.value,
           unitId: originalId,
-          sellerUid: sellerUid,
+          sellerUid: seller.uid,
         };
 
-        // create new entry in the unit collection
-        setDoc(doc(getFirestore(), 'unit', originalId), newUnit);
-
-        // create new entry in the seller's unit subcollection
-        setDoc(doc(getFirestore(), 'users', sellerUid, 'unitList', originalId), newUnit);
-
-        const docRef = doc(getFirestore(), 'users', sellerUid);
-
-        // update prop of the seller
-        await updateDoc(docRef, {
-          unitList: arrayUnion(newUnit),
-        }).catch(error => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Error adding new unit to the database', errorCode, errorMessage);
-        });
+        setDoc(doc(getFirestore(), 'users', seller.uid, 'unitList', originalId), newUnit);
       });
   }
 }

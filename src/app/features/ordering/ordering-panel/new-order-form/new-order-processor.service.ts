@@ -1,27 +1,17 @@
-import { Seller } from './../../../../shared/models/user/seller.interface';
-import { Order } from './../../../../shared/models/order/order.interface';
+import { UnifiedListUnit, UnifiedListData } from '@shared/models/order/unified-list-item.interface';
+import { Seller } from '@shared/models/user/seller.interface';
+import { Order } from '@shared/models/order/order.interface';
 import { Injectable } from '@angular/core';
 import { NewOrderFormValue } from './new-order-form.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { take } from 'rxjs';
-import { doc, getFirestore, getDoc, setDoc, updateDoc, arrayUnion, FieldValue } from 'firebase/firestore';
+import { doc, getFirestore, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Client } from '@shared/models/user/client.interface';
 import moment from 'moment';
 
 const generateUniqueId = require('generate-unique-id');
 
-export interface UnitDTO {
-  unitName: string;
-  value: number;
-  amount: number;
-  calculated: number;
-}
-
-export interface Data {
-  icecreamName: string;
-  units: UnitDTO[];
-}
 @Injectable({
   providedIn: 'root',
 })
@@ -77,7 +67,7 @@ export class NewOrderProcessorService {
         const icecreamSnap = await getDoc(icecreamRef);
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const setRef = (await icecreamSnap.data()) as Data;
+        const setRef = (await icecreamSnap.data()) as UnifiedListData;
 
         // const docRef = doc(getFirestore(), 'users', sellerUid);
 
@@ -90,7 +80,7 @@ export class NewOrderProcessorService {
           });
 
           if (cherryPick.length == 0) {
-            const newUnit: UnitDTO = {
+            const newUnit: UnifiedListUnit = {
               unitName: newOrderFormValue.unit.name,
               value: newOrderFormValue.unit.value,
               amount: parsedAmount,
@@ -123,7 +113,7 @@ export class NewOrderProcessorService {
             });
           }
         } else {
-          const newEntry: Data = {
+          const newEntry: UnifiedListData = {
             icecreamName: newOrderFormValue.icecream.name,
             units: [
               {

@@ -1,5 +1,4 @@
 import { IceCreamListComponent } from './management-panel/ice-cream-manager/ice-cream-list/ice-cream-list.component';
-import { IceCreamManagerComponent } from './management-panel/ice-cream-manager/ice-cream-manager.component';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,9 +12,9 @@ import { DeleteGlobalUnitsFormComponent } from './management-panel/ice-cream-man
 import { UnitListComponent } from './management-panel/ice-cream-manager/unit-list/unit-list.component';
 import { ClientListComponent } from './management-panel/client-manager/client-list/client-list.component';
 import { OrderListComponent } from './management-panel/order-manager/order-list/order-list.component';
-import { UnifiedListComponent } from './management-panel/order-manager/order-list/unified-list/unified-list.component';
-import { CalculatorDirective } from './management-panel/order-manager/order-list/unified-list/calculator.directive';
-import { TotalCellComponent } from './management-panel/order-manager/order-list/unified-list/components/total-cell/total-cell.component';
+import { UnifiedListComponent } from './management-panel/order-manager/unified-list/unified-list.component';
+import { CalculatorDirective } from './management-panel/order-manager/unified-list/calculator.directive';
+import { TotalCellComponent } from './management-panel/order-manager/unified-list/components/total-cell/total-cell.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { TotalCellComponent } from './management-panel/order-manager/order-list/
     ManagementPanelComponent,
     AddClientFormComponent,
     IceCreamListComponent,
-    IceCreamManagerComponent,
     AddGlobalUnitsFormComponent,
     DeleteGlobalUnitsFormComponent,
     UnitListComponent,
