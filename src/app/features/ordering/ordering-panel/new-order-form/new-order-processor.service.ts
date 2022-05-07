@@ -56,75 +56,10 @@ export class NewOrderProcessorService {
         setDoc(doc(getFirestore(), 'orders', newOrder.sellerUid, currentDate, originalId), newOrder);
 
         this.updateUnifiedList(newOrder, currentDate, parsedAmount, newOrderFormValue);
-
-        // const icecreamRef = doc(
-        //   getFirestore(),
-        //   'icecreamProduction',
-        //   newOrder.sellerUid,
-        //   currentDate,
-        //   newOrder.icecream.name
-        // );
-        // const icecreamSnap = await getDoc(icecreamRef);
-
-        // const setRef = (await icecreamSnap.data()) as UnifiedListData;
-
-        // if (icecreamSnap.exists()) {
-        //   const cherryPick = setRef.units.filter(unit => {
-        //     return unit.unitName == newOrderFormValue.unit.name;
-        //   });
-        //   const filtered = setRef.units.filter(unit => {
-        //     return unit.unitName !== newOrderFormValue.unit.name;
-        //   });
-
-        //   if (cherryPick.length == 0) {
-        //     const newUnit: UnifiedListUnit = {
-        //       unitName: newOrderFormValue.unit.name,
-        //       value: newOrderFormValue.unit.value,
-        //       amount: parsedAmount,
-        //       calculated: parsedAmount * newOrderFormValue.unit.value,
-        //     };
-
-        //     const arr = setRef.units;
-        //     arr.push(newUnit);
-
-        //     await updateDoc(icecreamRef, {
-        //       icecreamName: setRef.icecreamName,
-        //       units: arr,
-        //     });
-        //   }
-
-        //   if (cherryPick.length == 1) {
-        //     cherryPick[0].amount += parsedAmount;
-        //     cherryPick[0].calculated += parsedAmount * newOrderFormValue.unit.value;
-        //     filtered.push(cherryPick[0]);
-
-        //     await updateDoc(icecreamRef, {
-        //       icecreamName: setRef.icecreamName,
-        //       units: setRef.units,
-        //     });
-        //   }
-        // } else {
-        //   const newEntry: UnifiedListData = {
-        //     icecreamName: newOrderFormValue.icecream.name,
-        //     units: [
-        //       {
-        //         unitName: newOrderFormValue.unit.name,
-        //         value: newOrderFormValue.unit.value,
-        //         amount: parsedAmount,
-        //         calculated: parsedAmount * newOrderFormValue.unit.value,
-        //       },
-        //     ],
-        //   };
-
-        //   setDoc(
-        //     doc(getFirestore(), 'icecreamProduction', newOrder.sellerUid, currentDate, newOrder.icecream.name),
-        //     newEntry
-        //   );
-        // }
       });
   }
 
-  private async updateUnifiedList(
+  public async updateUnifiedList(
     newOrder: Order,
     currentDate: string,
     parsedAmount: number,
@@ -143,59 +78,8 @@ export class NewOrderProcessorService {
 
     if (icecreamSnap.exists()) {
       this.updateUnifiedListData(parsedAmount, newOrderFormValue, icecreamRef, setRef);
-
-      // const cherryPick = setRef.units.filter(unit => {
-      //   return unit.unitName == newOrderFormValue.unit.name;
-      // });
-      // const filtered = setRef.units.filter(unit => {
-      //   return unit.unitName !== newOrderFormValue.unit.name;
-      // });
-
-      // if (cherryPick.length == 0) {
-      //   const newUnit: UnifiedListUnit = {
-      //     unitName: newOrderFormValue.unit.name,
-      //     value: newOrderFormValue.unit.value,
-      //     amount: parsedAmount,
-      //     calculated: parsedAmount * newOrderFormValue.unit.value,
-      //   };
-
-      //   const arr = setRef.units;
-      //   arr.push(newUnit);
-
-      //   await updateDoc(icecreamRef, {
-      //     icecreamName: setRef.icecreamName,
-      //     units: arr,
-      //   });
-      // }
-
-      // if (cherryPick.length == 1) {
-      //   cherryPick[0].amount += parsedAmount;
-      //   cherryPick[0].calculated += parsedAmount * newOrderFormValue.unit.value;
-      //   filtered.push(cherryPick[0]);
-
-      //   await updateDoc(icecreamRef, {
-      //     icecreamName: setRef.icecreamName,
-      //     units: setRef.units,
-      //   });
-      // }
     } else {
       this.createNewUnifiedListData(newOrderFormValue, parsedAmount, currentDate, newOrder);
-      // const newEntry: UnifiedListData = {
-      //   icecreamName: newOrderFormValue.icecream.name,
-      //   units: [
-      //     {
-      //       unitName: newOrderFormValue.unit.name,
-      //       value: newOrderFormValue.unit.value,
-      //       amount: parsedAmount,
-      //       calculated: parsedAmount * newOrderFormValue.unit.value,
-      //     },
-      //   ],
-      // };
-
-      // setDoc(
-      //   doc(getFirestore(), 'icecreamProduction', newOrder.sellerUid, currentDate, newOrder.icecream.name),
-      //   newEntry
-      // );
     }
   }
 
