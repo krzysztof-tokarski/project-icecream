@@ -10,27 +10,13 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 80%
+  width: 80%;
 }
 
 div {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 20px;
 }
-
-
-
-
-
-
-// $colors:      Aqua,  Aquamarine,  Beige,  Bisque,  BlanchedAlmond,  Blue,  BlueViolet,  Brown,  BurlyWood,  CadetBlue,  Chartreuse,  Chocolate,  Coral,  CornflowerBlue,  Cornsilk,  Crimson,  Cyan,  DarkBlue,  DarkCyan,  DarkGoldenRod,  DarkGreen,  DarkKhaki,  DarkMagenta,  DarkOliveGreen,  DarkOrange,  DarkOrchid,  DarkRed,  DarkSalmon,  DarkSeaGreen,  DarkSlateBlue,    DarkTurquoise,  DarkViolet,  DeepPink,  DeepSkyBlue,  DodgerBlue,  FireBrick, ForestGreen,  Fuchsia,  Gainsboro,   Gold,  GoldenRod,   Green,  GreenYellow,  HoneyDew,  HotPink,  IndianRed,  Indigo,  Ivory,  Khaki,  Lavender,  LavenderBlush,  LawnGreen,  LemonChiffon,  LightBlue,  LightCoral,  LightCyan,  LightGoldenRodYellow,   LightGreen,  LightPink,  LightSalmon,  LightSeaGreen,  LightSkyBlue, LightSteelBlue,  LightYellow,  Lime,  LimeGreen,  Linen,  Magenta,  Maroon,  MediumAquaMarine,  MediumBlue,  MediumOrchid,  MediumPurple,  MediumSeaGreen,  MediumSlateBlue,  MediumSpringGreen,  MediumTurquoise,  MediumVioletRed,  MidnightBlue,  MintCream,  MistyRose,  Moccasin,  NavajoWhite,  Navy,  OldLace,  Olive,  OliveDrab,  Orange,  OrangeRed,  Orchid,  PaleGoldenRod,  PaleGreen,  PaleTurquoise,  PaleVioletRed,  PapayaWhip,  PeachPuff,  Peru,  Pink,  Plum,  PowderBlue,  Purple,  RebeccaPurple,  Red,  RosyBrown,  RoyalBlue,  SaddleBrown,  Salmon,  SandyBrown,  SeaGreen,  SeaShell,  Sienna,  Silver,  SkyBlue,  SlateBlue,   SpringGreen,  SteelBlue,  Tan,  Teal,  Thistle,  Tomato,  Turquoise,  Violet,  Wheat, Yellow,  YellowGreen;
-// $repeat: 100;  // How often you want the pattern to repeat.
-// // Warning: a higher number outputs more CSS.
-
-// @for $i from 1 through $repeat {
-//     mat-list-item:nth-child(#{length($colors)}n+#{$i}) {
-//         background: lighten(nth($colors, random(length($colors))), 20%);
-//     }
-// }
-
 

@@ -1,23 +1,37 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+
+}
+
 div {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
-}
-
-button {
-  font-weight: bold;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-button:hover {
-  filter: brightness(90%);
+  gap: 20px;
 }
 
 mat-card-title {
-  text-align: center;
+  margin: 30px;
 }
 
 
+h2 {
+  width: 50%;
+  text-align: center;
+}
+
+.route {
+  color: hotpink;
+  font-weight: bold;
+}

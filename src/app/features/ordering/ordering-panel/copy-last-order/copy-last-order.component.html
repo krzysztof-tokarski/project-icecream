@@ -1,13 +1,30 @@
-<mat-card class="card">
-  <mat-card-title>COPY LAST ORDER</mat-card-title>
-  <mat-card-content>
-    <mat-card-subtitle>ICE CREAM YOU ORDERED LAST TIME</mat-card-subtitle>
-    <p>{{ (currentClient$ | async)?.lastOrder?.icecream?.name | uppercase }}</p>
+<ng-container *ngIf="currentClient$ | async; else loading">
+  <ng-container *ngIf="!alreadyOrdered; else alreadyOrderedMessage">
+    <ng-container *ngIf="(currentClient$ | async)?.lastOrder; else firstOrder">
+      <mat-card class="card">
+        <mat-card-title>COPY LAST ORDER</mat-card-title>
+        <mat-card-content>
+          <mat-card-subtitle>ICE CREAM YOU ORDERED LAST TIME</mat-card-subtitle>
+          <p>{{ (currentClient$ | async)?.lastOrder?.icecream?.name | uppercase }}</p>
+          <mat-card-subtitle>UNIT YOU ORDERED LAST TIME</mat-card-subtitle>
+          <p>{{ (currentClient$ | async)?.lastOrder?.unit?.name | uppercase }}</p>
+          <mat-card-subtitle>AMOUNT YOU ORDERED LAST TIME</mat-card-subtitle>
+          <p>{{ (currentClient$ | async)?.lastOrder?.amount }}</p>
+          <button (click)="onSubmit()" mat-raised-button color="accent">CONFIRM ORDER</button>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+</ng-container>
 
-    <mat-card-subtitle>UNIT YOU ORDERED LAST TIME</mat-card-subtitle>
-    <p>{{ (currentClient$ | async)?.lastOrder?.unit?.name | uppercase }}</p>
-    <mat-card-subtitle>AMOUNT YOU ORDERED LAST TIME</mat-card-subtitle>
-    <p>{{ (currentClient$ | async)?.lastOrder?.amount }}</p>
-    <button (click)="onSubmit()" mat-raised-button color="accent">CONFIRM ORDER</button>
-  </mat-card-content>
-</mat-card>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #alreadyOrderedMessage>
+  <h2>Seems like you have <b class="route"> already ordered something today</b>. Please come back tomorrow!</h2>
+</ng-template>
+
+<ng-template #firstOrder>
+  <h2>Hey, you gotta <b class="route">ORDER SOMETHING FIRST</b> before trying to <b class="route">REORDER IT</b>!</h2>
+</ng-template>

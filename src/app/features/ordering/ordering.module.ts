@@ -8,6 +8,7 @@ import { NewOrderFormComponent } from './ordering-panel/new-order-form/new-order
 import { FavouriteIceCreamListComponent } from './ordering-panel/favourite-ice-cream-list/favourite-ice-cream-list.component';
 import { CopyLastOrderComponent } from './ordering-panel/copy-last-order/copy-last-order.component';
 import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cream-card/ice-cream-card.component';
+import { OrderFromFavouritesComponent } from './ordering-panel/icecream-browser/order-from-favourites/order-from-favourites.component';
 // import { CurrentDayGuard } from './day.guard';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cre
     FavouriteIceCreamListComponent,
     CopyLastOrderComponent,
     IceCreamCardComponent,
+    OrderFromFavouritesComponent,
   ],
   imports: [
     SharedModule,
@@ -32,10 +34,6 @@ import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cre
             component: NewOrderFormComponent,
           },
           {
-            path: 'favourite-icecream',
-            component: FavouriteIceCreamListComponent,
-          },
-          {
             path: 'browse-icecream',
             component: IcecreamBrowserComponent,
           },
@@ -43,6 +41,15 @@ import { IceCreamCardComponent } from './ordering-panel/icecream-browser/ice-cre
             path: 'last-order',
             component: CopyLastOrderComponent,
             // canActivate: [CurrentDayGuard],
+          },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'browse-icecream',
+          },
+          {
+            path: '**',
+            redirectTo: 'browse-icecream',
           },
         ],
       },

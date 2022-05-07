@@ -1,16 +1,16 @@
 import { Router } from '@angular/router';
-import { Component, ChangeDetectionStrategy, ViewChild, ɵɵsetComponentScope } from '@angular/core';
-import { collection, collectionData, doc, docData, Firestore, getFirestore } from '@angular/fire/firestore';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Icecream } from '@shared/models/ice-cream/icecream.interface';
-import { Order } from '@shared/models/order/order.interface';
+
 import { Client } from '@shared/models/user/client.interface';
-import { Seller } from '@shared/models/user/seller.interface';
+
 import { AppState } from '@state/app.state';
 import { Observable, take } from 'rxjs';
 import { NewOrderFormGeneratorService } from '../new-order-form/new-order-form-generator.service';
 import { NewOrderProcessorService } from '../new-order-form/new-order-processor.service';
+import moment from 'moment';
 
 @Component({
   selector: 'icy-copy-last-order',
@@ -23,6 +23,7 @@ export class CopyLastOrderComponent {
 
   public form: FormGroup = this.newOrderFormGeneratorService.createForm();
   public currentClient$!: Observable<Client>;
+  public alreadyOrdered = false;
 
   constructor(
     private newOrderFormGeneratorService: NewOrderFormGeneratorService,
@@ -39,6 +40,11 @@ export class CopyLastOrderComponent {
       .subscribe(async client => {
         const clientRef = doc(this.firestore, `users/${client.uid}`);
         this.currentClient$ = docData(clientRef) as Observable<Client>;
+        this.currentClient$.pipe(take(1)).subscribe(client => {
+          if (client.lastOrder?.date === moment(new Date()).format('DD.MM.YYYY')) {
+            this.alreadyOrdered = true;
+          }
+        });
       });
   }
 

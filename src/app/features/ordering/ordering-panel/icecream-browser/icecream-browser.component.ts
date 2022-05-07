@@ -8,6 +8,7 @@ import { AppState } from '@state/app.state';
 
 import { Observable, take } from 'rxjs';
 import { Firestore, collectionData, collection, doc, getFirestore } from '@angular/fire/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'icy-icecream-browser',
   templateUrl: './icecream-browser.component.html',
@@ -18,9 +19,8 @@ export class IcecreamBrowserComponent {
   public icecreamList$!: Observable<Icecream[]>;
   public seller!: Seller;
 
-  constructor(private store: Store<AppState>, private firestore: Firestore) {
+  constructor(private store: Store<AppState>, private firestore: Firestore, private snackBar: MatSnackBar) {
     const selectClient = (state: AppState) => state.user.currentUser as Client;
-
     this.store
       .select(selectClient)
       .pipe(take(1))
@@ -28,11 +28,14 @@ export class IcecreamBrowserComponent {
         const icecreamListRef = collection(this.firestore, `users/${client.sellerUid}/icecreamList`);
         this.icecreamList$ = collectionData(icecreamListRef) as Observable<Icecream[]>;
         const docRef = doc(getFirestore(), 'users', client.sellerUid);
-
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           this.seller = docSnap.data() as Seller;
         }
       });
+  }
+
+  public openSnackBar(icecreamName: string) {
+    this.snackBar.open(`${icecreamName} is your favourite!`);
   }
 }

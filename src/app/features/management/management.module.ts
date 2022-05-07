@@ -80,16 +80,25 @@ import { TotalCellComponent } from './management-panel/order-manager/unified-lis
             path: 'unit-list',
             component: UnitListComponent,
           },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: '',
+          },
+          {
+            path: '**',
+            redirectTo: '',
+          },
         ],
       },
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '',
+        redirectTo: 'order-list-client',
       },
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'order-list-client',
       },
     ]),
   ],

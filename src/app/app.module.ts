@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 
 import { authReducer } from '@state/auth/auth.reducer';
 import { userReducer } from '@state/user/user.reducer';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDmknldActfY9SI1FbFKE2thRSR0urvbyo',
@@ -55,7 +56,7 @@ const firebaseConfig = {
       user: userReducer,
     }),
   ],
-  providers: [],
+  providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

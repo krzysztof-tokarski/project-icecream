@@ -1,6 +1,7 @@
-import { AddToFavsService } from './add-to-favs.service';
+import { FavsService } from './favs.service';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'icy-ice-cream-card',
@@ -10,10 +11,11 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class IceCreamCardComponent {
   @Input() public icecream!: Icecream;
+  @Input() public add!: boolean;
 
-  constructor(private addToFavsService: AddToFavsService) {}
+  constructor(private favsService: FavsService, private _snackBar: MatSnackBar) {}
 
   public onClick() {
-    this.addToFavsService.addToFav(this.icecream);
+    this.favsService.processClick(this.icecream, this.add);
   }
 }

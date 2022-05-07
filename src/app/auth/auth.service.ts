@@ -35,7 +35,7 @@ export class AuthService {
       if (user.role !== Role.Client) {
         this.router.navigateByUrl('app/management-panel/order-list-client');
       } else {
-        this.router.navigateByUrl('app/ordering-panel');
+        this.router.navigateByUrl('app/ordering-panel/browse-icecream');
       }
     } else {
       //  TODO :/

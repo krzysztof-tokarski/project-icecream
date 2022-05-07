@@ -1,3 +1,11 @@
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+
 .card{
   display: flex;
   flex-direction: column;
@@ -18,5 +26,15 @@ mat-card-subtitle {
 
 mat-card-content {
   margin: 0;
+}
+
+h2 {
+  width: 50%;
+  text-align: center;
+}
+
+.route {
+  color: hotpink;
+  font-weight: bold;
 }
 

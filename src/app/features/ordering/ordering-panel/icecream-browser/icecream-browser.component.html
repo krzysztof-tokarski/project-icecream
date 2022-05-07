@@ -4,9 +4,23 @@
     ><p>{{ seller.displayName | uppercase }}</p></mat-card-subtitle
   >
   <div class="container">
-    <icy-ice-cream-card *ngFor="let icecream of icecreamList$ | async" [icecream]="icecream"></icy-ice-cream-card>
+    <icy-ice-cream-card
+      (click)="openSnackBar(icecream.name)"
+      *ngFor="let icecream of icecreamList$ | async"
+      [icecream]="icecream"
+      [add]="true"
+      matTooltip="Click to add to favourites!">
+    </icy-ice-cream-card>
   </div>
 </mat-card>
 <ng-template #loading>
   <mat-spinner></mat-spinner>
 </ng-template>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<icy-favourite-ice-cream-list></icy-favourite-ice-cream-list>

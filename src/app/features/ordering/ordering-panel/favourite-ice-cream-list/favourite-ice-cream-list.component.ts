@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Icecream } from '@shared/models/ice-cream/icecream.interface';
@@ -14,9 +15,9 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 export class FavouriteIceCreamListComponent {
   public icecreamList$!: Observable<Icecream[]>;
 
-  constructor(private store: Store<AppState>, private firestore: Firestore) {
+  constructor(private store: Store<AppState>, private firestore: Firestore, private snackbar: MatSnackBar) {
     const selectUid = (state: AppState) => state.user.currentUser?.uid;
-    // to do
+
     this.store
       .select(selectUid)
       .pipe(take(1))
@@ -26,5 +27,7 @@ export class FavouriteIceCreamListComponent {
       });
   }
 
-  public onClick(icecream: Icecream) {}
+  public openSnackBar(icecreamName: string) {
+    this.snackbar.open(`${icecreamName} is no longer your favourite :(`);
+  }
 }

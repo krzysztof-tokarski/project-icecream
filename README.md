@@ -97,9 +97,6 @@ Steve Rambo
 
 
 
-USER1:
-wmoimnazwiskujestjednos@gmail.com
-strongpassword!
 
 
 

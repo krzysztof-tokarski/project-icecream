@@ -1,3 +1,10 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .card{
   display: flex;
   flex-direction: column;
@@ -11,3 +18,14 @@
     gap: 20px;
   }
 }
+
+h2 {
+  width: 50%;
+  text-align: center;
+}
+
+.route {
+  color: hotpink;
+  font-weight: bold;
+}
+
