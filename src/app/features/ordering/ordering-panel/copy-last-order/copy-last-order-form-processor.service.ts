@@ -18,31 +18,23 @@ export class CopyLastOrderFormProcessorService {
   constructor(private store: Store<AppState>) {}
 
   public async processOrder(lastOrder: Order) {
-    // const originalId: string = generateUniqueId({
-    //   length: 28,
-    //   useLetters: true,
-    // });
-    // const currentDate = moment(new Date()).format('YYYY.MM.DD');
-    // const sellerRef = doc(getFirestore(), 'users', lastOrder.seller.uid);
-    // const clientRef = doc(getFirestore(), 'users', lastOrder.client.uid);
-    // const newOrder: Order = {
-    //   orderId: originalId,
-    //   client: lastOrder.client,
-    //   seller: lastOrder.seller,
-    //   icecream: lastOrder.icecream,
-    //   unit: lastOrder.unit,
-    //   amount: lastOrder.amount,
-    //   date: currentDate,
-    // };
-    // // setDoc(doc(getFirestore(), 'users', lastOrder.client.uid, 'orderList', originalId), newOrder);
-    // // setDoc(doc(getFirestore(), 'users', lastOrder.seller.uid, 'orderList', originalId), newOrder);
-    // setDoc(doc(getFirestore(), 'orders', lastOrder.seller.uid, currentDate, originalId), newOrder);
-    // // await updateDoc(sellerRef, {
-    // //   // orderList: arrayUnion(newOrder),
-    // // });
-    // await updateDoc(clientRef, {
-    //   // orderList: arrayUnion(newOrder),
-    //   lastOrder: newOrder,
-    // });
+    const originalId: string = generateUniqueId({
+      length: 28,
+      useLetters: true,
+    });
+    const currentDate = moment(new Date()).format('YYYY.MM.DD');
+    const newOrder: Order = {
+      orderId: originalId,
+      clientUid: lastOrder.clientUid,
+      sellerUid: lastOrder.sellerUid,
+      clientDisplayName: lastOrder.clientDisplayName,
+      sellerDisplayName: lastOrder.sellerDisplayName,
+      icecream: lastOrder.icecream,
+      unit: lastOrder.unit,
+      amount: lastOrder.amount,
+      date: currentDate,
+    };
+
+    setDoc(doc(getFirestore(), 'orders', lastOrder.sellerUid, currentDate, originalId), newOrder);
   }
 }
