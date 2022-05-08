@@ -10,8 +10,18 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 20px;
   width: 400px;
+  &__buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 mat-list {

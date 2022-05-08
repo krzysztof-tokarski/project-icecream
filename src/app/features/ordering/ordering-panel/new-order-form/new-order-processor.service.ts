@@ -108,7 +108,6 @@ export class NewOrderProcessorService {
       arr.push(newUnit);
 
       await updateDoc(icecreamRef, {
-        icecreamName: setRef.icecreamName,
         units: arr,
       });
     }
@@ -119,7 +118,6 @@ export class NewOrderProcessorService {
       filtered.push(cherryPick[0]);
 
       await updateDoc(icecreamRef, {
-        icecreamName: setRef.icecreamName,
         units: setRef.units,
       });
     }

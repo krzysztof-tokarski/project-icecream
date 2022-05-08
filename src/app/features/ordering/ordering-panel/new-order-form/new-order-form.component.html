@@ -29,7 +29,7 @@
                 <mat-label>Unit</mat-label>
                 <mat-select formControlName="unit">
                   <mat-option *ngFor="let unit of unitList$ | async" [value]="unit">
-                    {{ unit.name }}
+                    {{ unit.name }} - {{ unit.value }} G
                   </mat-option>
                 </mat-select>
                 <mat-hint align="start">The kind of unit you would like to order</mat-hint>

@@ -26,7 +26,7 @@ export class AddClientDbProxyService {
             uid: userCredential.user.uid,
             sellerUid: seller.uid,
             role: Role.Client,
-            displayName: form.displayName,
+            displayName: form.displayName.trim().toUpperCase(),
           };
 
           // create new entry in the users collection

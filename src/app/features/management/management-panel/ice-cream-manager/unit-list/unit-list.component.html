@@ -7,6 +7,15 @@
           <p>{{ unit.name }} = {{ unit.value }} G</p>
         </mat-list-item>
       </mat-list>
+      <div class="card__buttons-container">
+        <div class="buttons-container">
+          <button (click)="sortByName()" mat-raised-button>Sort by Unit Name</button>
+          <button (click)="sortByValue()" mat-raised-button>Sort by Unit Value</button>
+        </div>
+      </div>
+      <mat-card-subtitle
+        >You're clicking these buttons at your own risk (transition is currently pretty bad!)</mat-card-subtitle
+      >
     </mat-card>
   </ng-container>
 </ng-container>

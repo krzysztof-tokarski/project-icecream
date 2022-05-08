@@ -5,7 +5,7 @@
       <mat-label>Unit Name</mat-label>
       <input formControlName="name" matInput />
       <mat-hint align="start"
-        >Enter the name of the Unit that you want deleted (this input is case sensitive)
+        >Enter the name of the Unit that you want deleted (this input is case insensitive)
       </mat-hint>
     </mat-form-field>
     <button [disabled]="form.invalid" mat-raised-button color="primary">DELETE UNIT</button>

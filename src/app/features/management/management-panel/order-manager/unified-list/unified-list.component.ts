@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import moment from 'moment';
 import { Observable, take } from 'rxjs';
+import { CollectionReference, orderBy, query } from 'firebase/firestore';
 
 @Component({
   selector: 'icy-unified-list',
@@ -15,6 +16,7 @@ import { Observable, take } from 'rxjs';
 })
 export class UnifiedListComponent implements OnInit {
   public orderList$!: Observable<UnifiedListData[]>;
+  private collectionRef!: CollectionReference;
 
   constructor(private store: Store<AppState>, private firestore: Firestore) {}
 
@@ -25,8 +27,9 @@ export class UnifiedListComponent implements OnInit {
       .pipe(take(1))
       .subscribe(seller => {
         const currentDate = moment(new Date()).format('DD.MM.YYYY');
-        const collectionRef = collection(this.firestore, `icecreamProduction/${seller.uid}`, currentDate);
-        this.orderList$ = collectionData(collectionRef) as Observable<UnifiedListData[]>;
+        this.collectionRef = collection(this.firestore, `icecreamProduction/${seller.uid}`, currentDate);
+        const sort = query(this.collectionRef, orderBy('icecreamName', 'asc'));
+        this.orderList$ = collectionData(sort) as Observable<UnifiedListData[]>;
       });
   }
 }

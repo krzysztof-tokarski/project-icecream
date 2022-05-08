@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { Unit } from '@shared/models/ice-cream/unit.interface';
 import { NewOrderFormValue } from './new-order-form.interface';
 import moment from 'moment';
+import { orderBy, query } from 'firebase/firestore';
 
 @Component({
   selector: 'icy-new-order-form',
@@ -48,11 +49,14 @@ export class NewOrderFormComponent {
             this.alreadyOrdered = true;
           } else {
             const icecreamListRef = collection(this.firestore, `users/${client.sellerUid}/icecreamList`);
+            const icecreamSort = query(icecreamListRef, orderBy('name', 'asc'));
             const unitListRef = collection(this.firestore, `users/${client.sellerUid}/unitList`);
+            const unitListSort = query(unitListRef, orderBy('value', 'asc'));
             const favIcecreamListRef = collection(this.firestore, `users/${client.uid}/favIcecreamList`);
-            this.icecreamList$ = collectionData(icecreamListRef) as Observable<Icecream[]>;
-            this.unitList$ = collectionData(unitListRef) as Observable<Unit[]>;
-            this.favIcecreamList$ = collectionData(favIcecreamListRef) as Observable<Icecream[]>;
+            const favIcecreamSort = query(favIcecreamListRef, orderBy('name', 'asc'));
+            this.icecreamList$ = collectionData(icecreamSort) as Observable<Icecream[]>;
+            this.unitList$ = collectionData(unitListSort) as Observable<Unit[]>;
+            this.favIcecreamList$ = collectionData(favIcecreamSort) as Observable<Icecream[]>;
           }
         });
       });
