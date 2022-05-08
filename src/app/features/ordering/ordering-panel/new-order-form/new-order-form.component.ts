@@ -66,6 +66,6 @@ export class NewOrderFormComponent {
     const formValue: NewOrderFormValue = this.form.value;
     this.newOrderProcessorService.processOrder(formValue);
     this.formGroupDirective.resetForm();
-    this.router.navigate(['app']);
+    this.router.navigateByUrl('app/ordering-panel/icecream-browser');
   }
 }

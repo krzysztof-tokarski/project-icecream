@@ -43,7 +43,7 @@ export class CopyLastOrderComponent {
     this.currentClient$.pipe(take(1)).subscribe(client => {
       if (client.lastOrder) {
         this.copyLastOrderFormProcessorService.processOrder(client.lastOrder);
-        this.router.navigate(['app']);
+        this.router.navigateByUrl('app/ordering-panel/icecream-browser');
       }
     });
   }
