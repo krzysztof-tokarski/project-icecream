@@ -4,7 +4,7 @@
       <mat-card-title>ICE CREAM LIST</mat-card-title>
       <mat-list>
         <mat-list-item *ngFor="let icecream of icecreamList$ | async; let index = index">
-          <p>{{ index + 1 }}. {{ icecream.name }}</p></mat-list-item
+          <p>{{ index + 1 }}. {{ icecream.name | uppercase }}</p></mat-list-item
         >
       </mat-list>
       <div class="card__buttons-container">

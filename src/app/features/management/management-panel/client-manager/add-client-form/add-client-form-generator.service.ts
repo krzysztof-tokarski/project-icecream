@@ -10,7 +10,7 @@ export class AddClientFormGeneratorService {
   public createForm() {
     const form = this.formBuilder.group({
       email: this.formBuilder.control('', [Validators.required, Validators.email]),
-      password: this.formBuilder.control('', [Validators.required]),
+      password: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
       displayName: this.formBuilder.control('', [Validators.required]),
     });
 

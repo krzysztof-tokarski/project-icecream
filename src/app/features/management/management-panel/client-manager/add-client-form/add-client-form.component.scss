@@ -9,5 +9,23 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
   }
+}
+
+.password-error,
+.email-error {
+  position: absolute;
+  font-size: 10px;
+  color: red;
+  width: 100%;
+  text-align: center;
+}
+
+.password-error {
+  top: 50px;
+}
+
+.email-error {
+  top: 250px;
 }

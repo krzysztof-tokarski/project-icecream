@@ -11,9 +11,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input #ctrl type="password" formControlName="password" matInput />
+          <input #password type="password" formControlName="password" matInput />
         </mat-form-field>
-        <p *ngIf="loginFail | async">There is no user matching these credentials</p>
+        <p *ngIf="(loginFail | async) && password.value.length === 0">There is no user matching these credentials</p>
         <p *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
           Password cannot be shorter than 6 characters
         </p>

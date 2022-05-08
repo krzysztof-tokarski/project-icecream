@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/member-ordering */
 import { LoginFormValue } from './login-form/login-form.interface';
-import { Injectable, ViewContainerRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -16,11 +18,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   private loginFail = new BehaviorSubject<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   public loginFailObservable = this.loginFail.asObservable();
 
   constructor(private router: Router, private store: Store<AppState>) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const userFromStorage: UserType = JSON.parse(sessionStorage.getItem('user')!);
     if (userFromStorage) {
       this.store.dispatch(AuthActions.setAuth());
@@ -44,12 +44,10 @@ export class AuthService {
       }
     } else {
       //  TODO :/
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.router.navigateByUrl(url!);
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   public signIn(form: LoginFormValue) {
     setPersistence(getAuth(), browserSessionPersistence).then(() => {
       signInWithEmailAndPassword(getAuth(), form.email, form.password)

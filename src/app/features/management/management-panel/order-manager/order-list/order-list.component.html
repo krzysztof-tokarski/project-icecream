@@ -16,13 +16,13 @@
             {{ index + 1 }}
           </td>
           <td>
-            {{ order.clientDisplayName }}
+            {{ order.clientDisplayName | uppercase }}
           </td>
           <td>
-            {{ order.icecream.name }}
+            {{ order.icecream.name | uppercase }}
           </td>
           <td>
-            {{ order.unit.name }}
+            {{ order.unit.name | uppercase }}
           </td>
           <td>
             {{ order.amount }}

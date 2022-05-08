@@ -9,15 +9,25 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input formControlName="password" matInput />
+        <input #password formControlName="password" matInput />
         <mat-hint align="start">This will serve as client's password when logging in to the app</mat-hint>
+        <p class="password-error" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+          Password cannot be shorter than 6 characters
+        </p>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Display name</mat-label>
         <input formControlName="displayName" matInput />
         <mat-hint align="start">This will serve as client's display name in the app</mat-hint>
       </mat-form-field>
+      <p *ngIf="addFail! | async" class="email-error">This email already exits in the database!</p>
       <button [disabled]="form.invalid" mat-raised-button color="primary">ADD CLIENT</button>
     </form>
   </mat-card-content>
 </mat-card>
+
+<!--
+<p *ngIf="(loginFail | async) && password.value.length === 0">There is no user matching these credentials</p>
+<p *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+  Password cannot be shorter than 6 characters
+</p> -->
