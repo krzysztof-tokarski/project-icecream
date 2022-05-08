@@ -1,38 +1,49 @@
 <ng-container *ngIf="currentClient$ | async; else loading">
   <ng-container *ngIf="!alreadyOrdered; else alreadyOrderedMessage">
     <ng-container *ngIf="icecreamList$ | async; else loading">
-      <ng-container *ngIf="(icecreamList$ | async)?.length"></ng-container>
-      <mat-card class="card">
-        <mat-card-title>NEW ORDER</mat-card-title>
-        <mat-card-content>
-          <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
-            <mat-form-field appearance="fill">
-              <mat-label>Icecream</mat-label>
-              <mat-select formControlName="icecream">
-                <mat-option *ngFor="let icecream of icecreamList$ | async" [value]="icecream">
-                  {{ icecream.name }}
-                </mat-option>
-              </mat-select>
-              <mat-hint align="start">The icecream you would like to order</mat-hint>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Unit</mat-label>
-              <mat-select formControlName="unit">
-                <mat-option *ngFor="let unit of unitList$ | async" [value]="unit">
-                  {{ unit.name }}
-                </mat-option>
-              </mat-select>
-              <mat-hint align="start">The kind of unit you would like to order</mat-hint>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Amount</mat-label>
-              <input pattern="\d*" placeholder="Ex: 5" formControlName="amount" matInput />
-              <mat-hint align="start">The amount of units that you would like to order</mat-hint>
-            </mat-form-field>
-            <button [disabled]="form.invalid" mat-raised-button color="primary">CONFIRM ORDER</button>
-          </form>
-        </mat-card-content>
-      </mat-card>
+      <div class="wrapper">
+        <mat-slide-toggle [disabled]="(favIcecreamList$ | async)?.length === 0" #toggle
+          >Slide me to filter Ice Cream to your favourites!</mat-slide-toggle
+        >
+        <mat-card class="card">
+          <mat-card-title>NEW ORDER</mat-card-title>
+          <mat-card-content>
+            <form (ngSubmit)="onSubmit()" [formGroup]="form" class="card__form">
+              <mat-form-field appearance="fill">
+                <mat-label>Icecream</mat-label>
+                <mat-select formControlName="icecream">
+                  <ng-container *ngIf="toggle.checked === false">
+                    <mat-option *ngFor="let icecream of icecreamList$ | async" [value]="icecream">
+                      {{ icecream.name }}
+                    </mat-option>
+                  </ng-container>
+                  <ng-container *ngIf="toggle.checked === true">
+                    <mat-option *ngFor="let icecream of favIcecreamList$ | async" [value]="icecream">
+                      {{ icecream.name }}
+                    </mat-option>
+                  </ng-container>
+                </mat-select>
+                <mat-hint align="start">The Ice Cream you would like to order</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Unit</mat-label>
+                <mat-select formControlName="unit">
+                  <mat-option *ngFor="let unit of unitList$ | async" [value]="unit">
+                    {{ unit.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-hint align="start">The kind of unit you would like to order</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input pattern="\d*" placeholder="Ex: 5" formControlName="amount" matInput />
+                <mat-hint align="start">The amount of units that you would like to order</mat-hint>
+              </mat-form-field>
+              <button [disabled]="form.invalid" mat-raised-button color="primary">CONFIRM ORDER</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </ng-container>
   </ng-container>
 </ng-container>

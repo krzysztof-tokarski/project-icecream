@@ -25,12 +25,12 @@ mat-panel-title {
   font-size: 20px;
 }
 
+
 table {
   width: 100%;
   max-width: 1000px;
   table-layout: fixed;
   background-color: white;
-  border: 1px solid black;
 }
 
 th, td {
@@ -39,12 +39,11 @@ th, td {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  border: 1px solid black;
   border-collapse: collapse;
 }
 
 th {
-  background-color: royalblue;
+  background-color: rgb(63, 81, 181);
   color: white;
   font-weight: bold;
   font-size: 1.2em;
@@ -67,6 +66,27 @@ tr > * {
   font-size: 20px;
   padding: 10px;
 }
+
+h2 {
+  width: 50%;
+  text-align: center;
+}
+
+.route {
+  background-color: royalblue;
+  font-weight: bold;
+}
+
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.089);
+}
+
+
 
 .h2 {
   width: 50%;

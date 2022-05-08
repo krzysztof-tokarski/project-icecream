@@ -40,7 +40,6 @@ import { OrderFromFavouritesComponent } from './ordering-panel/icecream-browser/
           {
             path: 'last-order',
             component: CopyLastOrderComponent,
-            // canActivate: [CurrentDayGuard],
           },
           {
             path: '',

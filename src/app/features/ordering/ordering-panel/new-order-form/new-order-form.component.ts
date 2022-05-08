@@ -25,6 +25,7 @@ export class NewOrderFormComponent {
   public form: FormGroup = this.newOrderFormGeneratorService.createForm();
   public icecreamList$!: Observable<Icecream[]>;
   public unitList$!: Observable<Unit[]>;
+  public favIcecreamList$!: Observable<Icecream[]>;
   public currentClient$!: Observable<Client>;
   public alreadyOrdered = false;
 
@@ -48,8 +49,10 @@ export class NewOrderFormComponent {
           } else {
             const icecreamListRef = collection(this.firestore, `users/${client.sellerUid}/icecreamList`);
             const unitListRef = collection(this.firestore, `users/${client.sellerUid}/unitList`);
+            const favIcecreamListRef = collection(this.firestore, `users/${client.uid}/favIcecreamList`);
             this.icecreamList$ = collectionData(icecreamListRef) as Observable<Icecream[]>;
             this.unitList$ = collectionData(unitListRef) as Observable<Unit[]>;
+            this.favIcecreamList$ = collectionData(favIcecreamListRef) as Observable<Icecream[]>;
           }
         });
       });
