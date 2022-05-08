@@ -13,8 +13,11 @@
           <mat-label>Password</mat-label>
           <input #password type="password" formControlName="password" matInput />
         </mat-form-field>
-        <p *ngIf="(loginFail | async) && password.value.length === 0">There is no user matching these credentials</p>
-        <p *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+        <p *ngIf="(loginFail | async) === true">There is no user matching these credentials</p>
+        <p
+          *ngIf="
+            form.controls['password'].invalid && form.controls['password'].touched && (loginFail | async) === false
+          ">
           Password cannot be shorter than 6 characters
         </p>
         <button [disabled]="form.invalid" mat-raised-button color="primary">SIGN IN</button>
