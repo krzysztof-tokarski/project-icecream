@@ -36,6 +36,6 @@ export class IcecreamBrowserComponent {
   }
 
   public openSnackBar(icecreamName: string) {
-    this.snackBar.open(`${icecreamName} is your favourite!`);
+    this.snackBar.open(`${icecreamName.toUpperCase()} is your favourite!`);
   }
 }

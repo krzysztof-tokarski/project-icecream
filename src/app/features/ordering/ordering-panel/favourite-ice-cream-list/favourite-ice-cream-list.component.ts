@@ -28,6 +28,6 @@ export class FavouriteIceCreamListComponent {
   }
 
   public openSnackBar(icecreamName: string) {
-    this.snackbar.open(`${icecreamName} is no longer your favourite :(`);
+    this.snackbar.open(`${icecreamName.toUpperCase()} is no longer your favourite :(`);
   }
 }
