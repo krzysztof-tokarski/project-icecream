@@ -14,7 +14,7 @@ import { Role } from '@shared/models/user/role.enum';
     SharedModule,
     RouterModule.forChild([
       {
-        path: 'app',
+        path: '',
         component: ShellComponent,
         canActivate: [IsAuthGuard],
         children: [
@@ -33,30 +33,11 @@ import { Role } from '@shared/models/user/role.enum';
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'ordering-panel',
+            redirectTo: 'management-panel',
           },
           {
             path: '**',
-            redirectTo: 'ordering-panel',
-          },
-        ],
-      },
-      {
-        path: 'auth',
-        component: ShellComponent,
-        children: [
-          {
-            path: '',
-            loadChildren: async () => (await import('../auth/auth.module')).AuthModule,
-          },
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'auth',
-          },
-          {
-            path: '**',
-            redirectTo: 'auth',
+            redirectTo: 'management-panel',
           },
         ],
       },

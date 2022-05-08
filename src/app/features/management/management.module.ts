@@ -1,4 +1,3 @@
-import { RoleGuard } from './../../shell/guards/role.guard';
 import { IceCreamListComponent } from './management-panel/ice-cream-manager/ice-cream-list/ice-cream-list.component';
 import { SharedModule } from '@shared/shared-module/shared.module';
 import { NgModule } from '@angular/core';
@@ -16,7 +15,6 @@ import { OrderListComponent } from './management-panel/order-manager/order-list/
 import { UnifiedListComponent } from './management-panel/order-manager/unified-list/unified-list.component';
 import { CalculatorDirective } from './management-panel/order-manager/unified-list/calculator.directive';
 import { TotalCellComponent } from './management-panel/order-manager/unified-list/components/total-cell/total-cell.component';
-import { Role } from '@shared/models/user/role.enum';
 
 @NgModule({
   declarations: [

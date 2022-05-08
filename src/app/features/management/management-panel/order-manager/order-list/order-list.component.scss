@@ -20,7 +20,7 @@ table {
   width: 85%;
   max-width: 1000px;
   table-layout: fixed;
-  background-color: white;
+  background-color: #EBF2FE
 }
 
 th, td {
@@ -40,12 +40,13 @@ th {
 }
 
 tr:nth-child(odd) {
-  background-color: white;
+  background-color:#D7E6FD
 }
 
 tr:nth-child(even) {
-  background-color: rgba(128, 128, 128, 0.089);
+  background-color: #B0CDFB
 }
+
 
 
 h2 {

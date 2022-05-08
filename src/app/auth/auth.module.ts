@@ -11,8 +11,17 @@ import { LoginFormComponent } from './login-form/login-form.component';
     SharedModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: 'sign-in',
         component: LoginFormComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'sign-in',
+      },
+      {
+        path: '**',
+        redirectTo: 'sign-in',
       },
     ]),
     CommonModule,

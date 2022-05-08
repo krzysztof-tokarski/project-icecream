@@ -72,18 +72,6 @@ h2 {
   text-align: center;
 }
 
-
-
-tr:nth-child(odd) {
-  background-color: white;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(128, 128, 128, 0.089);
-}
-
-
-
 .h2 {
   width: 50%;
   text-align: center;
@@ -93,3 +81,13 @@ tr:nth-child(even) {
   color: royalblue;
   font-weight: bold;
 }
+
+
+tr:nth-child(odd) {
+  background-color:#D7E6FD
+}
+
+tr:nth-child(even) {
+  background-color: #B0CDFB
+}
+

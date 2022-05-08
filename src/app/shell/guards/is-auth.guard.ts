@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { CanActivate, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
-import { map, Observable, take, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 const selectIsAuth = (state: AppState) => state.auth.isAuth;
 
@@ -22,16 +22,5 @@ export class IsAuthGuard implements CanActivate {
         }
       })
     );
-
-    // return this.store
-    //   .select(appState => appState.auth.isAuth)
-    //   .pipe(
-    //     map(authUser => {
-    //       if (!authUser) {
-    //         this.router.navigate(['auth']);
-    //       }
-    //       return authUser;
-    //     })
-    //   );
   }
 }

@@ -3,7 +3,6 @@ import { UserActions } from './user.actions';
 import { UserState } from './user.state';
 
 const initialState: UserState = {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   currentUser: null,
 };
 

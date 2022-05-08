@@ -14,12 +14,12 @@
                 <mat-select formControlName="icecream">
                   <ng-container *ngIf="toggle.checked === false">
                     <mat-option *ngFor="let icecream of icecreamList$ | async" [value]="icecream">
-                      {{ icecream.name }}
+                      {{ icecream.name | uppercase }}
                     </mat-option>
                   </ng-container>
                   <ng-container *ngIf="toggle.checked === true">
                     <mat-option *ngFor="let icecream of favIcecreamList$ | async" [value]="icecream">
-                      {{ icecream.name }}
+                      {{ icecream.name | uppercase }}
                     </mat-option>
                   </ng-container>
                 </mat-select>
@@ -29,7 +29,7 @@
                 <mat-label>Unit</mat-label>
                 <mat-select formControlName="unit">
                   <mat-option *ngFor="let unit of unitList$ | async" [value]="unit">
-                    {{ unit.name }} - {{ unit.value }} G
+                    {{ unit.name | uppercase }} - {{ unit.value }} G
                   </mat-option>
                 </mat-select>
                 <mat-hint align="start">The kind of unit you would like to order</mat-hint>

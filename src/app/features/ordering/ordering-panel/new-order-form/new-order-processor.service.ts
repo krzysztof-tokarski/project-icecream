@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { UnifiedListUnit, UnifiedListData } from '@shared/models/order/unified-list-item.interface';
 import { Seller } from '@shared/models/user/seller.interface';
 import { Order } from '@shared/models/order/order.interface';
@@ -9,7 +10,6 @@ import { take } from 'rxjs';
 import { doc, getFirestore, getDoc, setDoc, updateDoc, DocumentReference } from 'firebase/firestore';
 import { Client } from '@shared/models/user/client.interface';
 import moment from 'moment';
-
 const generateUniqueId = require('generate-unique-id');
 
 @Injectable({

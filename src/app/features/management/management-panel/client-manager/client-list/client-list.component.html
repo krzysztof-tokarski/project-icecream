@@ -1,5 +1,5 @@
 <ng-container *ngIf="clientList$ | async; else loading">
-  <ng-container *ngIf="(clientList$ | async)?.length; else message">
+  <ng-container *ngIf="(clientList$ | async)?.length !== 0; else message">
     <mat-card class="card">
       <mat-list>
         <mat-card-title>CLIENT LIST</mat-card-title>

@@ -17,6 +17,7 @@ export class AddClientDbProxyService {
   private addFail = new BehaviorSubject<boolean>(false);
   public addFailObservable = this.addFail.asObservable();
   public errorHandler = new ReplaySubject<string>(1);
+  public winHandler = new ReplaySubject<string>(1);
 
   constructor(private store: Store<AppState>) {}
 
@@ -40,6 +41,7 @@ export class AddClientDbProxyService {
 
             // create new entry in the seller's clientlist subcollection
             setDoc(doc(getFirestore(), 'users', seller.uid, 'clientList', userCredential.user.uid), newClient);
+            this.winHandler.next(newClient.displayName);
           })
           .catch(error => {
             if (error.code === 'auth/email-already-in-use') {

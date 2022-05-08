@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,11 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {
-    this.router.events.subscribe(ev => {
-      if (ev instanceof NavigationEnd) {
-        sessionStorage.setItem('url', this.router.url);
-      }
-    });
+    // comment: hacks tor rerouting
+    // this.router.events.subscribe(ev => {
+    //   if (ev instanceof NavigationEnd) {
+    //     sessionStorage.setItem('url', this.router.url);
+    //   }
+    // });
   }
 }

@@ -10,9 +10,9 @@ import { AuthActions } from 'src/app/state/auth/auth.actions';
 import { getAuth, signOut } from 'firebase/auth';
 import { UserActions } from '@state/user/user.actions';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { Role } from '@shared/models/user/role.enum';
 import { UserType } from '@shared/models/user/user.type';
 import { BehaviorSubject } from 'rxjs';
+import { Role } from '@shared/models/user/role.enum';
 @Injectable({
   providedIn: 'root',
 })
@@ -35,17 +35,23 @@ export class AuthService {
   private setStateAfterAuth(user: UserType) {
     this.store.dispatch(AuthActions.setAuth());
     this.store.dispatch(UserActions.signInCurrentUser(user));
-    const url = sessionStorage.getItem('url');
-    if (url == '/auth') {
-      if (user.role !== Role.Client) {
-        this.router.navigateByUrl('app/management-panel/order-list-client');
-      } else {
-        this.router.navigateByUrl('app/ordering-panel/browse-icecream');
-      }
+    if (user.role !== Role.Client) {
+      this.router.navigateByUrl('app/management-panel/order-list-client');
     } else {
-      //  TODO :/
-      this.router.navigateByUrl(url!);
+      this.router.navigateByUrl('app/ordering-panel/icecream-browser');
     }
+    // comment: hacks to counter the rerouting
+    // const url = sessionStorage.getItem('url');
+    // if (url == '/auth') {
+    // if (user.role !== Role.Client) {
+    //   //   this.router.('app');
+    // } else {
+    //   this.router.navigate(['app']);
+    // }
+    // } else {
+    //  TODO :/
+    // this.router.navigateByUrl(url!);
+    // }
   }
 
   public signIn(form: LoginFormValue) {
