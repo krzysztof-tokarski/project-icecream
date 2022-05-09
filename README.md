@@ -1,6 +1,6 @@
 ng deploy
 
-//project-icecream-9c598.web.app/app
+//https://project-icecream-9c598.web.app/auth/sign-in
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
