@@ -9,7 +9,7 @@ export class AddGlobalsUnitFormGeneratorService {
   public createForm() {
     const form = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required]),
-      value: this.formBuilder.control('', [Validators.required]),
+      value: this.formBuilder.control('', [Validators.required, Validators.min(1)]),
     });
     return form;
   }
